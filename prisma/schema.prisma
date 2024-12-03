@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// ENTRA
+
+model User {
+  id    String @id
+  email String @unique
+
+  isAdmin Boolean @default(false)
+
+  classId String?
+  class   Class?  @relation(fields: [classId], references: [id])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+// RESOURCES
+
+model Room {
+  id            String             @id @default(cuid())
+  name          String             @unique
+  created_at    DateTime           @default(now())
+  updated_at    DateTime           @updatedAt
+  substitutions Substitution[]
+  fromRoomSubs  RoomSubstitution[] @relation("FromRoom")
+  toRoomSubs    RoomSubstitution[] @relation("ToRoom")
+}
+
+model Subject {
+  id   String @id @default(cuid())
+  name String @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  substitutions Substitution[]
+}
+
+model Teacher {
+  id    String @id @default(cuid())
+  name  String
+  email String @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  substitutions Substitution[]
+}
+
+model Class {
+  id   String @id @default(cuid())
+  name String @unique
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  students      User[]
+  substitutions Substitution[]
+}
+
+// DATA
+
+model Announcement {
+  id      String   @id @default(cuid())
+  title   String
+  content String
+  date    DateTime
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Substitution {
+  id   String   @id @default(cuid())
+  date DateTime
+
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  teacherId String
+
+  subject   Subject @relation(fields: [subjectId], references: [id])
+  subjectId String
+
+  room   Room   @relation(fields: [roomId], references: [id])
+  roomId String
+
+  class   Class  @relation(fields: [classId], references: [id])
+  classId String
+
+  classGroup String
+
+  consolidated Boolean
+
+  lesson Int
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model RoomSubstitution {
+  id   String   @id @default(cuid())
+  date DateTime
+
+  fromRoom   Room   @relation("FromRoom", fields: [fromRoomId], references: [id])
+  fromRoomId String
+
+  toRoom   Room   @relation("ToRoom", fields: [toRoomId], references: [id])
+  toRoomId String
+
+  lesson Int
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
