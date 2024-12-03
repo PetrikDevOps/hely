@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,25 +10,72 @@ datasource db {
 // ENTRA
 
 model User {
-  id    String @id
-  email String @unique
-
-  isAdmin Boolean @default(false)
+  id            String          @id @default(cuid())
+  name          String?
+  email         String?         @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
 
   classId String?
   class   Class?  @relation(fields: [classId], references: [id])
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  isAdmin Boolean @default(false)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+ 
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  @@unique([provider, providerAccountId])
+}
+ 
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+ 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+ 
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+ 
+  @@unique([identifier, token])
+}
+
 
 // RESOURCES
 
 model Room {
   id            String             @id @default(cuid())
   name          String             @unique
-  created_at    DateTime           @default(now())
-  updated_at    DateTime           @updatedAt
+  createdAt    DateTime           @default(now())
+  updatedAt    DateTime           @updatedAt
   substitutions Substitution[]
   fromRoomSubs  RoomSubstitution[] @relation("FromRoom")
   toRoomSubs    RoomSubstitution[] @relation("ToRoom")
@@ -41,8 +85,8 @@ model Subject {
   id   String @id @default(cuid())
   name String @unique
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   substitutions Substitution[]
 }
@@ -52,8 +96,8 @@ model Teacher {
   name  String
   email String @unique
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   substitutions Substitution[]
 }
@@ -62,8 +106,8 @@ model Class {
   id   String @id @default(cuid())
   name String @unique
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   students      User[]
   substitutions Substitution[]
@@ -77,8 +121,8 @@ model Announcement {
   content String
   date    DateTime
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Substitution {
@@ -103,8 +147,8 @@ model Substitution {
 
   lesson Int
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model RoomSubstitution {
@@ -119,6 +163,6 @@ model RoomSubstitution {
 
   lesson Int
 
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
