@@ -74,6 +74,7 @@ model VerificationToken {
 model Room {
   id            String             @id @default(cuid())
   name          String             @unique
+  short        String             @unique
   createdAt    DateTime           @default(now())
   updatedAt    DateTime           @updatedAt
   substitutions Substitution[]
@@ -84,6 +85,7 @@ model Room {
 model Subject {
   id   String @id @default(cuid())
   name String @unique
+  short String @unique
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -94,6 +96,7 @@ model Subject {
 model Teacher {
   id    String @id @default(cuid())
   name  String
+  short String
   email String @unique
 
   createdAt DateTime @default(now())
@@ -111,6 +114,7 @@ model Class {
 
   students      User[]
   substitutions Substitution[]
+  roomSubs      RoomSubstitution[]
 }
 
 // DATA
@@ -141,7 +145,7 @@ model Substitution {
   class   Class  @relation(fields: [classId], references: [id])
   classId String
 
-  classGroup String
+  classGroup String?
 
   consolidated Boolean
 
@@ -160,6 +164,9 @@ model RoomSubstitution {
 
   toRoom   Room   @relation("ToRoom", fields: [toRoomId], references: [id])
   toRoomId String
+
+  class  Class  @relation(fields: [classId], references: [id])
+  classId String
 
   lesson Int
 

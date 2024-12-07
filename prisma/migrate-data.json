@@ -1,0 +1,1523 @@
+{
+  "classes": [
+    {
+      "name": "9KNY"
+    },
+    {
+      "name": "9A"
+    },
+    {
+      "name": "9B"
+    },
+    {
+      "name": "9C"
+    },
+    {
+      "name": "9D"
+    },
+    {
+      "name": "9E"
+    },
+    {
+      "name": "9G"
+    },
+    {
+      "name": "10A"
+    },
+    {
+      "name": "10B"
+    },
+    {
+      "name": "10C"
+    },
+    {
+      "name": "10D"
+    },
+    {
+      "name": "10E"
+    },
+    {
+      "name": "11A"
+    },
+    {
+      "name": "11B"
+    },
+    {
+      "name": "11C"
+    },
+    {
+      "name": "11D"
+    },
+    {
+      "name": "11E"
+    },
+    {
+      "name": "12A"
+    },
+    {
+      "name": "12B"
+    },
+    {
+      "name": "12C"
+    },
+    {
+      "name": "12D"
+    },
+    {
+      "name": "12E"
+    },
+    {
+      "name": "13A"
+    },
+    {
+      "name": "13B"
+    },
+    {
+      "name": "13C"
+    },
+    {
+      "name": "13D"
+    },
+    {
+      "name": "13E"
+    },
+    {
+      "name": "1/13V"
+    },
+    {
+      "name": "1/13R"
+    },
+    {
+      "name": "2/14V"
+    },
+    {
+      "name": "2/14R"
+    },
+    {
+      "name": "2/14S"
+    },
+    {
+      "name": "1/13VL"
+    },
+    {
+      "name": "2/14VL"
+    },
+    {
+      "name": "1/15DL"
+    },
+    {
+      "name": "1/13VE"
+    },
+    {
+      "name": "2/14VE"
+    },
+    {
+      "name": "1/13RL"
+    }
+  ],
+  "classrooms": [
+    {
+      "name": "testnevelés1",
+      "short": "As007"
+    },
+    {
+      "name": "testnevelés2",
+      "short": "kistesi"
+    },
+    {
+      "name": "testnevelés3",
+      "short": "nagytesi"
+    },
+    {
+      "name": "testnevelés3*",
+      "short": "udvar"
+    },
+    {
+      "name": "testnevelés4",
+      "short": "uszoda"
+    },
+    {
+      "name": "testnevelés4*",
+      "short": "külső"
+    },
+    {
+      "name": "A007",
+      "short": "A007"
+    },
+    {
+      "name": "A009",
+      "short": "A009"
+    },
+    {
+      "name": "A014",
+      "short": "A014"
+    },
+    {
+      "name": "A015",
+      "short": "A015"
+    },
+    {
+      "name": "A105",
+      "short": "A105"
+    },
+    {
+      "name": "A106",
+      "short": "A106"
+    },
+    {
+      "name": "A108",
+      "short": "A108"
+    },
+    {
+      "name": "B314",
+      "short": "B314"
+    },
+    {
+      "name": "B331",
+      "short": "B331"
+    },
+    {
+      "name": "B117-135",
+      "short": "B117-135"
+    },
+    {
+      "name": "B212-230",
+      "short": "B212-230"
+    },
+    {
+      "name": "B014_aut",
+      "short": "B014_aut"
+    },
+    {
+      "name": "B021_műv",
+      "short": "B021_műv"
+    },
+    {
+      "name": "A018A",
+      "short": "A018A"
+    },
+    {
+      "name": "A018B",
+      "short": "A018B"
+    },
+    {
+      "name": "A023",
+      "short": "A023"
+    },
+    {
+      "name": "A117",
+      "short": "A117"
+    },
+    {
+      "name": "A118",
+      "short": "A118"
+    },
+    {
+      "name": "Györgyi Tamás A",
+      "short": "GYT A"
+    },
+    {
+      "name": "Györgyi Tamás B",
+      "short": "GYT B"
+    },
+    {
+      "name": "A122",
+      "short": "A122"
+    },
+    {
+      "name": "A222",
+      "short": "A222"
+    },
+    {
+      "name": "A109",
+      "short": "A109"
+    },
+    {
+      "name": "As009",
+      "short": "As009"
+    },
+    {
+      "name": "A010",
+      "short": "A010"
+    },
+    {
+      "name": "A119",
+      "short": "A119"
+    },
+    {
+      "name": "A123",
+      "short": "A123"
+    },
+    {
+      "name": "A205",
+      "short": "A205"
+    },
+    {
+      "name": "A206",
+      "short": "A206"
+    },
+    {
+      "name": "A208",
+      "short": "A208"
+    },
+    {
+      "name": "A210",
+      "short": "A210"
+    },
+    {
+      "name": "A215",
+      "short": "A215"
+    },
+    {
+      "name": "A216",
+      "short": "A216"
+    },
+    {
+      "name": "A217",
+      "short": "A217"
+    },
+    {
+      "name": "A218",
+      "short": "A218"
+    },
+    {
+      "name": "A220",
+      "short": "A220"
+    },
+    {
+      "name": "B017",
+      "short": "B017"
+    },
+    {
+      "name": "B042",
+      "short": "B042"
+    },
+    {
+      "name": "B112 tárgyaló",
+      "short": "B112 tárgyaló"
+    },
+    {
+      "name": "Petrik Előadó",
+      "short": "Petrik EA"
+    },
+    {
+      "name": "B203",
+      "short": "B203"
+    },
+    {
+      "name": "B204",
+      "short": "B204"
+    },
+    {
+      "name": "B205",
+      "short": "B205"
+    },
+    {
+      "name": "B207",
+      "short": "B207"
+    },
+    {
+      "name": "B219",
+      "short": "B219"
+    },
+    {
+      "name": "B210-211",
+      "short": "B. II. EA"
+    },
+    {
+      "name": "B303",
+      "short": "B303"
+    },
+    {
+      "name": "B304",
+      "short": "B304"
+    },
+    {
+      "name": "B306",
+      "short": "B306"
+    },
+    {
+      "name": "B307",
+      "short": "B307"
+    },
+    {
+      "name": "B310_alsó",
+      "short": "B310_alsó"
+    },
+    {
+      "name": "B311_felső",
+      "short": "B311_felső"
+    },
+    {
+      "name": "Könyvtár",
+      "short": "Könyvtár"
+    },
+    {
+      "name": "A209 - Szertár",
+      "short": "A209"
+    }
+  ],
+  "subjects": [
+    {
+      "name": "Adatbázis-kezelés I.",
+      "short": "Adatb-I"
+    },
+    {
+      "name": "Adatbázis-kezelés II",
+      "short": "AdatbII"
+    },
+    {
+      "name": "Alkalmazott kémia",
+      "short": "Alk.kém"
+    },
+    {
+      "name": "Állampolgári ismeretek",
+      "short": "Ái"
+    },
+    {
+      "name": "Általános kémia",
+      "short": "Ált.kém"
+    },
+    {
+      "name": "Általános kémia angol nyelven",
+      "short": "ÁltKémAng"
+    },
+    {
+      "name": "Analitika",
+      "short": "Analitika"
+    },
+    {
+      "name": "Analitika gyakorlat",
+      "short": "An.gyak"
+    },
+    {
+      "name": "Analitika gyakorlat (elmélet)",
+      "short": "Anal.gyak (elm)"
+    },
+    {
+      "name": "Analitikai szabványvizsgálatok",
+      "short": "Anal.szabv.vizsg."
+    },
+    {
+      "name": "Angol",
+      "short": "Ang"
+    },
+    {
+      "name": "Célnyelvi civilizáció",
+      "short": "Civ."
+    },
+    {
+      "name": "Anyagismeret",
+      "short": "Anyagism."
+    },
+    {
+      "name": "Asztali alkalmazások elmélet",
+      "short": "AA-E"
+    },
+    {
+      "name": "Asztali alkalmazások fejlesztése",
+      "short": "AA Fejl."
+    },
+    {
+      "name": "Asztali és mobil alkalmazások fejlesztése és tesztelése - C#",
+      "short": "AMAF_C"
+    },
+    {
+      "name": "Asztali és mobil alkalmazások fejlesztése és tesztelése - mobil",
+      "short": "AMAF_mobil"
+    },
+    {
+      "name": "Backend programozás és tesztelés",
+      "short": "Backend"
+    },
+    {
+      "name": "Biológia",
+      "short": "Biol"
+    },
+    {
+      "name": "Biológia fakultáció 12",
+      "short": "Biol.fak.12"
+    },
+    {
+      "name": "Biológiai vizsgálatok",
+      "short": "Biol vizsg"
+    },
+    {
+      "name": "Biotechnológia",
+      "short": "Biotech"
+    },
+    {
+      "name": "Biotechnológia gyakorlat",
+      "short": "BioTech GY"
+    },
+    {
+      "name": "Digitális kultúra",
+      "short": "DiKu"
+    },
+    {
+      "name": "Drogismeret",
+      "short": "Drogism"
+    },
+    {
+      "name": "Drogismereti laboratóriumi gyakorlatok",
+      "short": "Drogism GY"
+    },
+    {
+      "name": "Elektroanalitika",
+      "short": "Elek.an."
+    },
+    {
+      "name": "Elválasztástechnika I.",
+      "short": "Elv.tech I."
+    },
+    {
+      "name": "Elválasztástechnika II.",
+      "short": "Elv.tech II."
+    },
+    {
+      "name": "Fizika",
+      "short": "Fiz"
+    },
+    {
+      "name": "Földméréstani alapismeretek I.",
+      "short": "Földmér. alapism I."
+    },
+    {
+      "name": "Földméréstani alapismeretek II.",
+      "short": "F.mér.tain alapism. II"
+    },
+    {
+      "name": "Földrajz szakkör",
+      "short": "Földr.szk"
+    },
+    {
+      "name": "Frontend programozás és tesztelés",
+      "short": "Frontend"
+    },
+    {
+      "name": "Hálózatok I.",
+      "short": "Háló1"
+    },
+    {
+      "name": "Hálózatok I. gyakorlat",
+      "short": "Háló1-Gy"
+    },
+    {
+      "name": "Hálózatok II.",
+      "short": "Háló2"
+    },
+    {
+      "name": "Hálózatok II. gyakorlat",
+      "short": "Háló2-Gy"
+    },
+    {
+      "name": "Hálózatok programozása és loT",
+      "short": "HPr_loT"
+    },
+    {
+      "name": "Hidraulika alapjai",
+      "short": "Hidr. alap."
+    },
+    {
+      "name": "Hidraulika alapjai GY",
+      "short": "Hidr.alap. GY"
+    },
+    {
+      "name": "Hidrológia alapjai",
+      "short": "Hidro.alap."
+    },
+    {
+      "name": "IKT projektmunka I.",
+      "short": "IKTPr1"
+    },
+    {
+      "name": "IKT projektmunka I. - IT alapok",
+      "short": "IKTPr1-IT"
+    },
+    {
+      "name": "IKT projektmunka I. - Programozási alapok",
+      "short": "IKTPr1-Prog"
+    },
+    {
+      "name": "IKT projektmunka I. - Programozási alapok - Python",
+      "short": "IKTPr1-Python"
+    },
+    {
+      "name": "IKT projektmunka I. - Programozási alapok - Web",
+      "short": "IKTPr1-Web"
+    },
+    {
+      "name": "IKT projektmunka II",
+      "short": "IKTPrII"
+    },
+    {
+      "name": "IKT projektmunka II - Asztali alkalmazások fejlesztése",
+      "short": "IKTPrII-AAFejl"
+    },
+    {
+      "name": "IKT Projektmunka II - C#",
+      "short": "IKTPrII-C#"
+    },
+    {
+      "name": "IKT projektmunka II - Mobil",
+      "short": "IKTPrII-Mobil"
+    },
+    {
+      "name": "IKT projektmunka II - Webprogramozás",
+      "short": "IKTPrII-Web"
+    },
+    {
+      "name": "Informatikai és távközlési alapok I. - Elektronika",
+      "short": "IT1-E"
+    },
+    {
+      "name": "Informatikai és távközlési alapok I. - IT",
+      "short": "IT1-IT"
+    },
+    {
+      "name": "Informatikai és távközlési alapok II.",
+      "short": "IT2"
+    },
+    {
+      "name": "Informatikai és távközlési alapok II. gyakorlat",
+      "short": "IT2-Gy"
+    },
+    {
+      "name": "Irodai szoftverek",
+      "short": "IrSz"
+    },
+    {
+      "name": "Irodai szoftverek gyakorlat",
+      "short": "IrSz-Gy"
+    },
+    {
+      "name": "Irodalom",
+      "short": "Irod."
+    },
+    {
+      "name": "Jog és szakigazgatási ismeretek",
+      "short": "Jog és szakig. ism"
+    },
+    {
+      "name": "Jog és szakigazgatási ismeretek GY",
+      "short": "Jog szakig. ism GY"
+    },
+    {
+      "name": "Kémia",
+      "short": "Kém"
+    },
+    {
+      "name": "Kémia angol nyelven",
+      "short": "Kémang"
+    },
+    {
+      "name": "Kemometria",
+      "short": "Kemomet."
+    },
+    {
+      "name": "Komplex természettudományos tárgy",
+      "short": "Komplex"
+    },
+    {
+      "name": "Komplex természettudományos tárgy a.",
+      "short": "KomplexAng"
+    },
+    {
+      "name": "Környezet és munkavédelem",
+      "short": "Körny és munkavéd"
+    },
+    {
+      "name": "Környezetechnika alapjai II",
+      "short": "Ktech.alap II"
+    },
+    {
+      "name": "Környezeti analitika gyakorlat",
+      "short": "Körny.an. gyak"
+    },
+    {
+      "name": "Környezeti változások",
+      "short": "Környvált"
+    },
+    {
+      "name": "Környezeti változások gyakorlat",
+      "short": "Körny.vált. gyak"
+    },
+    {
+      "name": "Környezettechnika",
+      "short": "Környtech"
+    },
+    {
+      "name": "Környezettechnika alapjai I.",
+      "short": "Ktech.alap.I"
+    },
+    {
+      "name": "Környezettechnika alapjai II ELM",
+      "short": "KörnyTech II ELM"
+    },
+    {
+      "name": "Környezetvédelmi alapismeretek",
+      "short": "K.véd alapok"
+    },
+    {
+      "name": "Környezetvédelmi alapismeretek I.",
+      "short": "Kvéd alapism. I."
+    },
+    {
+      "name": "Környezetvédelmi alapismeretek II",
+      "short": "Kvéd.alapism. II"
+    },
+    {
+      "name": "Környezetvédelmi alapismeretek II GY",
+      "short": "Körny Alap II GY"
+    },
+    {
+      "name": "Környezetvédelmi gyakorlat",
+      "short": "Körny.véd gyak"
+    },
+    {
+      "name": "Környezetvédelmi mérések",
+      "short": "Kvéd. mérések"
+    },
+    {
+      "name": "Környezetvédelmi technológiák",
+      "short": "Kvéd. techn"
+    },
+    {
+      "name": "Laboratóriumi és vegyipari műveletek és szabályozásuk",
+      "short": "Lab. & vegyip. műv. és szab."
+    },
+    {
+      "name": "Laboratóriumi gyakorlat.",
+      "short": "Lab.gyak."
+    },
+    {
+      "name": "Laboratóriumi ismeretek",
+      "short": "Labor. Ism."
+    },
+    {
+      "name": "Laboratóriumok működtetése",
+      "short": "Lab.műk."
+    },
+    {
+      "name": "Linux alapok",
+      "short": "LiAl"
+    },
+    {
+      "name": "Linux alapok gyakorlat",
+      "short": "LiAl-Gy"
+    },
+    {
+      "name": "Magyar nyelv",
+      "short": "Magyar"
+    },
+    {
+      "name": "Magyar nyelv és irodalom",
+      "short": "Magyar/Ir"
+    },
+    {
+      "name": "Matematika",
+      "short": "Mat"
+    },
+    {
+      "name": "Matematika angol nyelven",
+      "short": "Matang"
+    },
+    {
+      "name": "Matematika fakultáció 11",
+      "short": "Mat.fakt.11"
+    },
+    {
+      "name": "Matematika fakultáció 12",
+      "short": "Mat.fakt.12"
+    },
+    {
+      "name": "Média",
+      "short": "Média"
+    },
+    {
+      "name": "Mérési gyakorlat",
+      "short": "Mér. gyak."
+    },
+    {
+      "name": "Mobil alkalmazások fejlesztése",
+      "short": "MobilA-Fejl"
+    },
+    {
+      "name": "Morfológiai és rendszerezési gyakorlatok",
+      "short": "MorfoGY"
+    },
+    {
+      "name": "Multimédiás felületek előállítása",
+      "short": "Multi"
+    },
+    {
+      "name": "Munkavállalói idegen nyelv",
+      "short": "M.v. id.nyelv"
+    },
+    {
+      "name": "Munkavállalói ismeretek",
+      "short": "Munk.v.ism"
+    },
+    {
+      "name": "Műszaki alapismeretek",
+      "short": "Műsz. alapism"
+    },
+    {
+      "name": "Műszaki és digitális alapok",
+      "short": "Műsz. és dig.al."
+    },
+    {
+      "name": "Műszaki és irányítástechnikai ismeretek",
+      "short": "Műsz.Ir.Ism."
+    },
+    {
+      "name": "Műszaki ismeretek",
+      "short": "Műsz.Ism."
+    },
+    {
+      "name": "Műszaki/ Földmérés/Környvéf GY",
+      "short": "Műsz/Fmérés/Kvéd GY"
+    },
+    {
+      "name": "Műszeres Analatika GY - Projekt feladat",
+      "short": "Műsz.an.GY - Projekt"
+    },
+    {
+      "name": "Műszeres analitika gyakorlat",
+      "short": "Műsz. an. gyak"
+    },
+    {
+      "name": "Német",
+      "short": "Ném"
+    },
+    {
+      "name": "Növény-szervezettan és rednszertan",
+      "short": "Növ.tan"
+    },
+    {
+      "name": "Objektumorientált Programozás",
+      "short": "OOP"
+    },
+    {
+      "name": "Osztályfőnöki",
+      "short": "Ofő"
+    },
+    {
+      "name": "Pénzügyi és vállalkozói ismeretek",
+      "short": "Pénzügy"
+    },
+    {
+      "name": "Preparatív gyakorlat",
+      "short": "Prep. gyak"
+    },
+    {
+      "name": "Programozás",
+      "short": "Pr"
+    },
+    {
+      "name": "Programozás gyakorlat",
+      "short": "Pr-Gy"
+    },
+    {
+      "name": "Programozási alapok",
+      "short": "PrAl"
+    },
+    {
+      "name": "Programozási alapok - Python",
+      "short": "Pr-Py"
+    },
+    {
+      "name": "Programozási alapok - Web",
+      "short": "Pr-Web"
+    },
+    {
+      "name": "Spektrometria",
+      "short": "Spektro."
+    },
+    {
+      "name": "Szakmai angol",
+      "short": "SzAng"
+    },
+    {
+      "name": "Szakmai idegen nyelv",
+      "short": "Sz. id. nyelv"
+    },
+    {
+      "name": "Szakmai kémia",
+      "short": "Szakkém"
+    },
+    {
+      "name": "Szakmai kémia angol nyelven",
+      "short": "Szakkémang"
+    },
+    {
+      "name": "Szerverek és felhőszolgáltatások",
+      "short": "SzFe"
+    },
+    {
+      "name": "Szerverek és felhőszolgáltatások gyakorlat",
+      "short": "SzFe-Gy"
+    },
+    {
+      "name": "Szerves gyakorlat",
+      "short": "Szerves GY"
+    },
+    {
+      "name": "Szerves gyakorlat (elmélet)",
+      "short": "Szerves GY (elm)"
+    },
+    {
+      "name": "Szervetlen és szerves kémia",
+      "short": "Sztlen&szerv. kém."
+    },
+    {
+      "name": "Szoftvertesztelés",
+      "short": "SzTeszt"
+    },
+    {
+      "name": "Technológiai folyamatok és minőségbiztosításuk",
+      "short": "Techn.foly. és min.biz."
+    },
+    {
+      "name": "Termékek ipari és laboratóriumi előállítása",
+      "short": "Term.ip.& lab. EA"
+    },
+    {
+      "name": "Természettudományos vizsgálatok",
+      "short": "Ter.tud vizsg"
+    },
+    {
+      "name": "Természettudományos vizsgálatok és  Környezetvédelmi alapismeretek I.",
+      "short": "Ttud.vizsg&Kvéd.a.ism.I"
+    },
+    {
+      "name": "Testnevelés",
+      "short": "Test."
+    },
+    {
+      "name": "Toxikológia",
+      "short": "Toxi elm"
+    },
+    {
+      "name": "Toxikológiai műszeres mérések",
+      "short": "Tox.műsz.mér."
+    },
+    {
+      "name": "Történelem",
+      "short": "Tört."
+    },
+    {
+      "name": "Vegyipari alapozó gyakorlat",
+      "short": "Vegy.alap.gyak"
+    },
+    {
+      "name": "Vegyipari műszaki feladatok",
+      "short": "Vegy.műsz.fel."
+    },
+    {
+      "name": "Vegyipari műveletek és irányításuk ",
+      "short": "Vegy. műv és ir."
+    },
+    {
+      "name": "Vegyipari műveletek és irányításuk gyakorlat",
+      "short": "Vegyip. műv. és ir. GY"
+    },
+    {
+      "name": "Vizsgaremek felkészítő",
+      "short": "Vizsgar-felk"
+    },
+    {
+      "name": "Webprogramozás",
+      "short": "Webpr"
+    },
+    {
+      "name": "Kémia fakultáció",
+      "short": "Kém.fakt."
+    },
+    {
+      "name": "Történelem fakultáció",
+      "short": "Tört.fakt"
+    },
+    {
+      "name": "Versenyfelkészítő",
+      "short": "Versenyf."
+    },
+    {
+      "name": "IKT projektmunka I. - Informatikai és távközlési alapok I. - IT",
+      "short": "IKT-I_ITal"
+    },
+    {
+      "name": "Mikrobiológiai gyakorlatok",
+      "short": "MikrobiolGY"
+    },
+    {
+      "name": "Környezetevédelmi és Környezetetchnikai Alapgyakorlatok II",
+      "short": "Ktech.Kvéd.II GY"
+    },
+    {
+      "name": "Természettudományos vizsgálatok/ Hidrológia alapjai",
+      "short": "Term.tud/ Hidro.alap GY"
+    },
+    {
+      "name": "Műszaki ismeretek/ Földméréstani alapismeretek I.",
+      "short": "Műsz.ism/ Földm.alap.ism"
+    },
+    {
+      "name": "Természettudományos vizsgálatok/ Környzetvédelmi alapismeretek I",
+      "short": "Term.tud.vizsg/Kvéd.alap"
+    },
+    {
+      "name": "Matematika sz.",
+      "short": "Mat. sz."
+    },
+    {
+      "name": "Érettségi felkészítő (12.e informatikai ismeretek)",
+      "short": "É.felk (info ism)"
+    },
+    {
+      "name": "Testnevelés (úszás)",
+      "short": "Test. (úszás)"
+    },
+    {
+      "name": "Testnevelés W",
+      "short": "Test. W"
+    },
+    {
+      "name": "Helyettesítés 1",
+      "short": "H1"
+    },
+    {
+      "name": "Helyettesítés 2",
+      "short": "H2"
+    },
+    {
+      "name": "Biológia fakultáció",
+      "short": "Biol.fakt."
+    },
+    {
+      "name": "Matematika fakultáció",
+      "short": "Mat.fakt."
+    },
+    {
+      "name": "Gyári gyakorlat",
+      "short": "Gyárigyak"
+    },
+    {
+      "name": "Vegyipari művelettan",
+      "short": "VegyMűv"
+    },
+    {
+      "name": "Vegyipari technológia",
+      "short": "VegyTech"
+    },
+    {
+      "name": "Projektfeladat",
+      "short": "Projekt"
+    },
+    {
+      "name": "Ágazati alapvizsga felkészítő",
+      "short": "Alapvizsga felk"
+    },
+    {
+      "name": "Szakmai fizika",
+      "short": "Szakmfiz"
+    },
+    {
+      "name": "Egyéb foglalkozás",
+      "short": "Egyéb fogl"
+    },
+    {
+      "name": "OSZTV felkészítő Vegyész",
+      "short": "OSZTV_felk_VEGY"
+    },
+    {
+      "name": "OSZTV fekészítő környezetvédő",
+      "short": "OSZTV_felk_KVÉD"
+    },
+    {
+      "name": "Irinyi felkészítő",
+      "short": "Irinyi felk."
+    },
+    {
+      "name": "Korrepetálás",
+      "short": "Korrep."
+    }
+  ],
+  "teachers": [
+    {
+      "name": "Babusa Tamás Gyula",
+      "short": "Babusa",
+      "email": "unknown"
+    },
+    {
+      "name": "Bagóné Tóth   Katalin",
+      "short": "B. Tóth",
+      "email": "unknown"
+    },
+    {
+      "name": "Bálint György",
+      "short": "Bálint",
+      "email": "unknown"
+    },
+    {
+      "name": "Balogh Botond",
+      "short": "BBotond",
+      "email": "unknown"
+    },
+    {
+      "name": "Balogh  Zoltán",
+      "short": "BZoltán",
+      "email": "unknown"
+    },
+    {
+      "name": "Barabás Gergő",
+      "short": "Barabás",
+      "email": "unknown"
+    },
+    {
+      "name": "Bátki Ottilia",
+      "short": "Bátki",
+      "email": "unknown"
+    },
+    {
+      "name": "Bende Gyöngyi Zsuzsanna",
+      "short": "Bende",
+      "email": "unknown"
+    },
+    {
+      "name": "Benyó Judit Borbála",
+      "short": "Benyó",
+      "email": "unknown"
+    },
+    {
+      "name": "Béresné Bodó Noémi Klementina",
+      "short": "Béresné",
+      "email": "unknown"
+    },
+    {
+      "name": "Dr. Berkesné Okos Melinda",
+      "short": "Berkesné",
+      "email": "unknown"
+    },
+    {
+      "name": "Bogdán Marianna",
+      "short": "Bogdán",
+      "email": "unknown"
+    },
+    {
+      "name": "Bozóki Judit",
+      "short": "Bozóki",
+      "email": "unknown"
+    },
+    {
+      "name": "Bődi István",
+      "short": "Bődi",
+      "email": "unknown"
+    },
+    {
+      "name": "Budaházi Bence Nándor",
+      "short": "Budaházi",
+      "email": "unknown"
+    },
+    {
+      "name": "Czikkely Imre",
+      "short": "Czikkely",
+      "email": "unknown"
+    },
+    {
+      "name": "Czinkóczi Tamás",
+      "short": "Czinkóczi",
+      "email": "unknown"
+    },
+    {
+      "name": "Csák Szilárd Csongor",
+      "short": "Csák",
+      "email": "unknown"
+    },
+    {
+      "name": "Csutak Zsolt",
+      "short": "Csutak",
+      "email": "unknown"
+    },
+    {
+      "name": "Darányi Katalin",
+      "short": "Darányi",
+      "email": "unknown"
+    },
+    {
+      "name": "De Rose Lynn",
+      "short": "De Rose Lynn",
+      "email": "unknown"
+    },
+    {
+      "name": "Demkó Erika",
+      "short": "Demkó",
+      "email": "unknown"
+    },
+    {
+      "name": "Domján Edit Dóra",
+      "short": "Domján",
+      "email": "unknown"
+    },
+    {
+      "name": "Duschák Zsuzsanna",
+      "short": "Duschák",
+      "email": "unknown"
+    },
+    {
+      "name": "Elekesné Sallai Mónika Angéla",
+      "short": "Elekesné",
+      "email": "unknown"
+    },
+    {
+      "name": "Fandel Richárd Gábor",
+      "short": "Fandel",
+      "email": "unknown"
+    },
+    {
+      "name": "Ferencei Boglárka",
+      "short": "Ferencei",
+      "email": "unknown"
+    },
+    {
+      "name": "Forgó Zsuzsanna",
+      "short": "Forgó",
+      "email": "unknown"
+    },
+    {
+      "name": "Fortuna Zsuzsanna",
+      "short": "Fortuna",
+      "email": "unknown"
+    },
+    {
+      "name": "Frank Attila",
+      "short": "Frank",
+      "email": "unknown"
+    },
+    {
+      "name": "Gál-Berey Csilla",
+      "short": "Gál-Berey",
+      "email": "unknown"
+    },
+    {
+      "name": "Gőgh Zsolt",
+      "short": "Gőgh",
+      "email": "unknown"
+    },
+    {
+      "name": "Guth Gabriella Éva",
+      "short": "Guth",
+      "email": "unknown"
+    },
+    {
+      "name": "Hajagos Máté",
+      "short": "Hajagos",
+      "email": "unknown"
+    },
+    {
+      "name": "Halász Gábor",
+      "short": "HalászG",
+      "email": "unknown"
+    },
+    {
+      "name": "Hertelendi Gábor",
+      "short": "Hertelendi",
+      "email": "unknown"
+    },
+    {
+      "name": "Horváth Gyöngyi",
+      "short": "HorváthGy",
+      "email": "unknown"
+    },
+    {
+      "name": "Horváth Norbert",
+      "short": "HorváthN",
+      "email": "unknown"
+    },
+    {
+      "name": "Horváth Zoltán",
+      "short": "HorváthZ",
+      "email": "unknown"
+    },
+    {
+      "name": "Jabelkó-Tolnai Csilla Anna",
+      "short": "Jabelkó",
+      "email": "unknown"
+    },
+    {
+      "name": "Kállóné Husi Zsuzsanna",
+      "short": "Kállóné",
+      "email": "unknown"
+    },
+    {
+      "name": "Karsai Gergő",
+      "short": "KarsaiG",
+      "email": "unknown"
+    },
+    {
+      "name": "Kasparek Péter",
+      "short": "Kasparek",
+      "email": "unknown"
+    },
+    {
+      "name": "Király Zalán",
+      "short": "Király",
+      "email": "unknown"
+    },
+    {
+      "name": "Koczka István",
+      "short": "Koczka",
+      "email": "unknown"
+    },
+    {
+      "name": "Kollár Zsuzsanna",
+      "short": "Kollár",
+      "email": "unknown"
+    },
+    {
+      "name": "Kovács Olivér",
+      "short": "KovácsO",
+      "email": "unknown"
+    },
+    {
+      "name": "Kovács Zoltán",
+      "short": "KovácsZ",
+      "email": "unknown"
+    },
+    {
+      "name": "Kovácsné Antal Éva",
+      "short": "Kovácsné",
+      "email": "unknown"
+    },
+    {
+      "name": "Kugyelláné Schmidtka Ágnes",
+      "short": "Kugyelláné",
+      "email": "unknown"
+    },
+    {
+      "name": "Laman Richárd",
+      "short": "Laman",
+      "email": "unknown"
+    },
+    {
+      "name": "Latabár Endre Péter",
+      "short": "Latabár",
+      "email": "unknown"
+    },
+    {
+      "name": "Lénárdné Bárdossy Ágota",
+      "short": "Lénárdné",
+      "email": "unknown"
+    },
+    {
+      "name": "Dr. Lois Izabella",
+      "short": "dr Lois",
+      "email": "unknown"
+    },
+    {
+      "name": "Lovas Margaret Anikó",
+      "short": "Lovas",
+      "email": "unknown"
+    },
+    {
+      "name": "Madarász Ákos",
+      "short": "Madarász",
+      "email": "unknown"
+    },
+    {
+      "name": "Márta Jószef István",
+      "short": "Márta",
+      "email": "unknown"
+    },
+    {
+      "name": "Merényi Miklós",
+      "short": "Merényi",
+      "email": "unknown"
+    },
+    {
+      "name": "Mészáros Tamás",
+      "short": "Mészáros",
+      "email": "unknown"
+    },
+    {
+      "name": "Nagy Judit",
+      "short": "NagyJ",
+      "email": "unknown"
+    },
+    {
+      "name": "Nagyné Németh Ildikó Andrea",
+      "short": "Nagyné",
+      "email": "unknown"
+    },
+    {
+      "name": "Dr. Nagyné Székely Emőke",
+      "short": "NagynéSzékely",
+      "email": "unknown"
+    },
+    {
+      "name": "Nyisztorné Kozma Amália Éva",
+      "short": "Nyisztorné",
+      "email": "unknown"
+    },
+    {
+      "name": "Omischl-Németh Eszter",
+      "short": "O-NémethE",
+      "email": "unknown"
+    },
+    {
+      "name": "Pappné Debreczeni Ildikó",
+      "short": "Pappné",
+      "email": "unknown"
+    },
+    {
+      "name": "Pál Csenge",
+      "short": "Pál",
+      "email": "unknown"
+    },
+    {
+      "name": "Penksza Károlyné",
+      "short": "PenkszaJ",
+      "email": "unknown"
+    },
+    {
+      "name": "Petri Judit",
+      "short": "Petri",
+      "email": "unknown"
+    },
+    {
+      "name": "Rápolthy Bálint",
+      "short": "Rápolthy",
+      "email": "unknown"
+    },
+    {
+      "name": "Rausch Péter",
+      "short": "Rausch",
+      "email": "unknown"
+    },
+    {
+      "name": "Ribni Ferenc",
+      "short": "Ribni",
+      "email": "unknown"
+    },
+    {
+      "name": "Sárközi-Paulik Brigitta",
+      "short": "Sárközi",
+      "email": "unknown"
+    },
+    {
+      "name": "Schubert Bence",
+      "short": "Schubert",
+      "email": "unknown"
+    },
+    {
+      "name": "Seres Orsolya Zsuzsanna",
+      "short": "Seres",
+      "email": "unknown"
+    },
+    {
+      "name": "Siska Dávid",
+      "short": "Siska",
+      "email": "unknown"
+    },
+    {
+      "name": "Somogyi Zsolt",
+      "short": "Somogyi",
+      "email": "unknown"
+    },
+    {
+      "name": "Sőre Ferenc",
+      "short": "Sőre",
+      "email": "unknown"
+    },
+    {
+      "name": "Szabados István",
+      "short": "Szabados",
+      "email": "unknown"
+    },
+    {
+      "name": "Dr. Szabó Marianna",
+      "short": "dr Szabó",
+      "email": "unknown"
+    },
+    {
+      "name": "Szajkó Orsolya",
+      "short": "Szajkó",
+      "email": "unknown"
+    },
+    {
+      "name": "Szolnok Ádám",
+      "short": "Szolnok",
+      "email": "unknown"
+    },
+    {
+      "name": "Takács Emese",
+      "short": "Takács",
+      "email": "unknown"
+    },
+    {
+      "name": "Tihanyi Péter",
+      "short": "Tihanyi",
+      "email": "unknown"
+    },
+    {
+      "name": "Tóth Béla",
+      "short": "TóthB",
+      "email": "unknown"
+    },
+    {
+      "name": "Tóth Éva",
+      "short": "Tóth Éva",
+      "email": "unknown"
+    },
+    {
+      "name": "Tóth Krisztina",
+      "short": "TóthK",
+      "email": "unknown"
+    },
+    {
+      "name": "Uhlár Zoltán István",
+      "short": "Uhlár",
+      "email": "unknown"
+    },
+    {
+      "name": "Urbán Barbara",
+      "short": "Urbán",
+      "email": "unknown"
+    },
+    {
+      "name": "Urbin Péter",
+      "short": "Urbin",
+      "email": "unknown"
+    },
+    {
+      "name": "Vámos Tibor",
+      "short": "VámosT",
+      "email": "unknown"
+    },
+    {
+      "name": "Varga László",
+      "short": "Varga",
+      "email": "unknown"
+    },
+    {
+      "name": "Veres Gyula",
+      "short": "Veres",
+      "email": "unknown"
+    },
+    {
+      "name": "Villányi-Borsics Eszter",
+      "short": "Villányi",
+      "email": "unknown"
+    },
+    {
+      "name": "Völgyi Ferenc Iván",
+      "short": "Völgyi",
+      "email": "unknown"
+    },
+    {
+      "name": "Weisz Ilona Mária",
+      "short": "Weisz",
+      "email": "unknown"
+    }
+  ]
+}
