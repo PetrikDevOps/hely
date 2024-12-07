@@ -1,9 +1,15 @@
 import type { PageServerLoad, Actions } from './$types';
 import prisma from '$lib/server/prisma';
+import dayjs from 'dayjs';
 import { fail } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async () => {
   const roomSubstitutions = await prisma.roomSubstitution.findMany({
+    where: {
+      date: {
+        gte: dayjs().startOf('day').toDate()
+      }
+    },
     include: {
       fromRoom: true,
       toRoom: true,
@@ -15,6 +21,11 @@ export const load: PageServerLoad = async () => {
   });
 
   const substitutions = await prisma.substitution.findMany({
+    where: {
+      date: {
+        gte: dayjs().startOf('day').toDate()
+      }
+    },
     include: {
       teacher: true,
       missingTeacher: true,
