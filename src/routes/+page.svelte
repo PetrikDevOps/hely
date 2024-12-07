@@ -3,5 +3,7 @@
 </script>
 
 <main>
-  {JSON.stringify(data)}
+  <code>
+    {JSON.stringify(data, null, 2)}
+  </code>
 </main>
