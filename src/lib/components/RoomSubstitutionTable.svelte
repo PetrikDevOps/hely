@@ -17,7 +17,7 @@
   ];
 </script>
 
-<div class="overflow-hidden rounded-xl border border-petrik-3 shadow-xl">
+<div class="overflow-hidden rounded-xl shadow-xl">
   <div
     class="flex items-center justify-between border-b-2 border-petrik-3 bg-black bg-opacity-30 px-4 py-2"
   >

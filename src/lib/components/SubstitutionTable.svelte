@@ -20,7 +20,7 @@
   ]
 </script>
 
-<div class="rounded-xl overflow-hidden border border-petrik-3 shadow-xl">
+<div class="rounded-xl overflow-hidden shadow-xl">
   <div class="bg-black bg-opacity-30 border-b-2 border-petrik-3 py-2 px-4 flex justify-between items-center">
     <h2 class="text-2xl font-semibold">{dayjs(date).format("LL")} - {dayjs(date).format("dddd")}</h2>
     <div class="flex gap-2">
