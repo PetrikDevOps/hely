@@ -103,6 +103,7 @@ model Teacher {
   updatedAt DateTime @updatedAt
 
   substitutions Substitution[]
+  missingSubs   Substitution[] @relation("MissingTeacher")
 }
 
 model Class {
@@ -132,6 +133,9 @@ model Announcement {
 model Substitution {
   id   String   @id @default(cuid())
   date DateTime
+
+  missingTeacher   Teacher   @relation("MissingTeacher", fields: [missingTeacherId], references: [id])
+  missingTeacherId String
 
   teacher   Teacher @relation(fields: [teacherId], references: [id])
   teacherId String

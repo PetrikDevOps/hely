@@ -83,6 +83,7 @@ const migrate = async () => {
   for (let i = 0; i < 10; i++) {
     const randomClass = data.classes[Math.floor(Math.random() * data.classes.length)];
     const randomTeacher = data.teachers[Math.floor(Math.random() * data.teachers.length)];
+    const missingTeacher = data.teachers[Math.floor(Math.random() * data.teachers.length)];
     const randomSubject = data.subjects[Math.floor(Math.random() * data.subjects.length)];
     const randomClassroom = data.classrooms[Math.floor(Math.random() * data.classrooms.length)];
 
@@ -90,6 +91,7 @@ const migrate = async () => {
       data: {
         date: new Date(),
         teacherId: randomTeacher.id as string,
+        missingTeacherId: missingTeacher.id as string,
         subjectId: randomSubject.id as string,
         roomId: randomClassroom.id as string,
         classId: randomClass.id as string,
