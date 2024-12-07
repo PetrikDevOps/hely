@@ -70,7 +70,6 @@ model VerificationToken {
 
 
 // RESOURCES
-
 model Room {
   id            String             @id @default(cuid())
   name          String             @unique
@@ -118,13 +117,13 @@ model Class {
   roomSubs      RoomSubstitution[]
 }
 
-// DATA
 
+// DATA
 model Announcement {
   id      String   @id @default(cuid())
   title   String
   content String
-  date    DateTime
+  date    DateTime @default(now()) @db.Date
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -132,7 +131,7 @@ model Announcement {
 
 model Substitution {
   id   String   @id @default(cuid())
-  date DateTime
+  date DateTime @default(now()) @db.Date
 
   missingTeacher   Teacher   @relation("MissingTeacher", fields: [missingTeacherId], references: [id])
   missingTeacherId String
@@ -161,7 +160,7 @@ model Substitution {
 
 model RoomSubstitution {
   id   String   @id @default(cuid())
-  date DateTime
+  date DateTime @default(now()) @db.Date
 
   fromRoom   Room   @relation("FromRoom", fields: [fromRoomId], references: [id])
   fromRoomId String
