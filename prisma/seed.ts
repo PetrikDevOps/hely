@@ -31,7 +31,7 @@ const getRandomElement = <T>(arr: T[]): T => {
 
 const getRandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
-}
+};
 
 const createFn = async (
   prismaCreate: (_) => Promise<{ id: string }>,
@@ -60,7 +60,11 @@ const createRandomSubstitutions = async (prisma: PrismaClient, data: MigrateJson
   }
 };
 
-const createRandomRoomSubstitutions = async (prisma: PrismaClient, data: MigrateJson, date: Date) => {
+const createRandomRoomSubstitutions = async (
+  prisma: PrismaClient,
+  data: MigrateJson,
+  date: Date
+) => {
   for (let i = 0; i < getRandomNumber(2, 20); i++) {
     await prisma.roomSubstitution.create({
       data: {
@@ -98,10 +102,82 @@ const migrate = async () => {
     const currentDate = dayjs().add(i, 'day').hour(0).minute(0).second(0).millisecond(0).toDate();
     await createRandomSubstitutions(prisma, data, currentDate);
     await createRandomRoomSubstitutions(prisma, data, currentDate);
-    await prisma.announcement.create({ data: { date: currentDate, title: 'Test announcement', content: "This is a test announcement for some day that I'm too lazy to template in here. Hello from seed.ts! :D" } });
+    await prisma.announcement.create({
+      data: {
+        date: currentDate,
+        title: 'Test announcement',
+        content:
+          "This is a test announcement for some day that I'm too lazy to template in here. Hello from seed.ts! :D"
+      }
+    });
     console.log(` Created data for ${dayjs(currentDate).format('YYYY-MM-DD')}`);
   }
 
+  await prisma.class.create({
+    data: {
+      id: 'test',
+      name: 'Teszt osztály',
+    }
+  });
+
+  await prisma.room.create({
+    data: {
+      id: 'test',
+      name: 'Teszt terem',
+      short: 'TT'
+    }
+  });
+
+  await prisma.teacher.create({
+    data: {
+      id: 'test',
+      name: 'Tesztes Tóni',
+      short: 'TTÓni',
+      email: 'teszt@petrik.hu'
+    }
+  });
+
+  await prisma.subject.create({
+    data: {
+      id: 'test',
+      name: 'Teszt tantárgy',
+      short: 'TT'
+    }
+  });
+
+  await prisma.substitution.create({
+    data: {
+      id: 'test',
+      date: dayjs().hour(0).minute(0).second(0).millisecond(0).toDate(),
+      teacherId: 'test',
+      missingTeacherId: 'test',
+      subjectId: 'test',
+      roomId: 'test',
+      classId: 'test',
+      consolidated: false,
+      lesson: 1,
+    }
+  });
+
+  await prisma.roomSubstitution.create({
+    data: {
+      id: 'test',
+      date: dayjs().hour(0).minute(0).second(0).millisecond(0).toDate(),
+      fromRoomId: 'test',
+      toRoomId: 'test',
+      classId: 'test',
+      lesson: 1
+    }
+  });
+
+  await prisma.announcement.create({
+    data: {
+      id: 'test',
+      date: dayjs().hour(0).minute(0).second(0).millisecond(0).toDate(),
+      title: 'Teszt bejelentés',
+      content: 'Ez egy teszt bejelentés a seed.ts-ből. Hello from seed.ts! :D'
+    }
+  });
 
   return {
     classes: await prisma.class.count(),
@@ -110,7 +186,7 @@ const migrate = async () => {
     subjects: await prisma.teacher.count(),
     substitutions: await prisma.substitution.count(),
     roomSubstitutions: await prisma.roomSubstitution.count()
-  }
+  };
 };
 
 console.log('󰹢 Seeding...');
@@ -119,7 +195,7 @@ const start = Date.now();
 migrate()
   .then((data) => {
     const end = Date.now();
-    console.log(`✔ Database seeded in ${(end - start)/1000}s`);
+    console.log(`✔ Database seeded in ${(end - start) / 1000}s`);
     console.info(
       `Created:\n- ${data.classes} classes\n- ${data.classrooms} classrooms\n- ${data.teachers} teachers\n- ${data.subjects} subjects\n- ${data.substitutions} substitutions\n- ${data.roomSubstitutions} room substitutions`
     );
