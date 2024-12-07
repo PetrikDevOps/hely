@@ -3,9 +3,24 @@ import dayjs from 'dayjs';
 import prisma from '$lib/server/prisma';
 import { createDataResponse, createErrorResponse } from '$lib/server/utils';
 
-export const GET: RequestHandler = async ({ url }) => {
+export const GET: RequestHandler = async ({ url, params }) => {
+  const teacherId = params.teacherId;
   const startDate = url.searchParams.get('startDate');
   const endDate = url.searchParams.get('endDate');
+
+  if (!teacherId) {
+    return createErrorResponse(400, 'Missing teacherId');
+  }
+
+  const teacherExists = prisma.class.findFirst({
+    where: {
+      id: teacherId
+    }
+  });
+
+  if (!teacherExists) {
+    return createErrorResponse(404, 'Teacher not found');
+  }
 
   if (startDate && endDate) {
     try {
@@ -24,8 +39,9 @@ export const GET: RequestHandler = async ({ url }) => {
       where: {
         date: {
           gte: dayjs(startDate).startOf('day').toDate(),
-          lte: dayjs(endDate).startOf('day').toDate()
+          lte: dayjs(endDate).endOf('day').toDate()
         },
+        teacherId
       },
       include: {
         teacher: true,
@@ -52,6 +68,7 @@ export const GET: RequestHandler = async ({ url }) => {
       date: {
         gte: dayjs().startOf('day').toDate()
       },
+      teacherId
     },
     include: {
       teacher: true,

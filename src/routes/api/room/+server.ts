@@ -20,7 +20,7 @@ export const GET: RequestHandler = async ({ url }) => {
     } catch {
       return createErrorResponse(400, 'Invalid date format');
     }
-    const substitutions = await prisma.substitution.findMany({
+    const roomSubstitutions = await prisma.roomSubstitution.findMany({
       where: {
         date: {
           gte: dayjs(startDate).startOf('day').toDate(),
@@ -28,11 +28,9 @@ export const GET: RequestHandler = async ({ url }) => {
         },
       },
       include: {
-        teacher: true,
-        missingTeacher: true,
-        subject: true,
-        room: true,
-        class: true
+        class: true,
+        fromRoom: true,
+        toRoom: true
       },
       orderBy: [
         {
@@ -44,21 +42,19 @@ export const GET: RequestHandler = async ({ url }) => {
       ]
     });
 
-    return createDataResponse(substitutions);
+    return createDataResponse(roomSubstitutions);
   }
   
-  const substitutions = await prisma.substitution.findMany({
+  const roomSubstitutions = await prisma.roomSubstitution.findMany({
     where: {
       date: {
         gte: dayjs().startOf('day').toDate()
       },
     },
     include: {
-      teacher: true,
-      missingTeacher: true,
-      subject: true,
-      room: true,
-      class: true
+      class: true,
+      fromRoom: true,
+      toRoom: true
     },
     orderBy: [
       {
@@ -70,5 +66,5 @@ export const GET: RequestHandler = async ({ url }) => {
     ]
   });
 
-  return createDataResponse(substitutions);
+  return createDataResponse(roomSubstitutions);
 }

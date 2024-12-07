@@ -5,7 +5,7 @@ export const createDataResponse = (data: any) => {
   return json({
     status: "success",
     count: data.length,
-    ...data,
+    data: data,
   });
 }
 
