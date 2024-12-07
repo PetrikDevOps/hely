@@ -2,13 +2,12 @@
   import SubstitutionTable from '$lib/components/table/Substitution.svelte';
   import RoomSubstitutionTable from '$lib/components/table/RoomSub.svelte';
   import dayjs from 'dayjs';
+  import huLocale from 'dayjs/locale/hu';
+  dayjs.locale(huLocale);
   import { capitalize } from '$lib/utils';
 
   let { data } = $props();
-  
-
-  console.log(data)
-</script>
+  </script>
 
 <main class="flex flex-col gap-3 px-2 pb-10 md:gap-6 md:px-0">
   {#each data.announcements as announcement}
