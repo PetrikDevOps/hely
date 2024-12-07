@@ -25,6 +25,6 @@
 	"waitFor": "postCreateCommand",
 
 	"postAttachCommand": {
-		"Server": "pnpm start --host"
+		"Server": "pnpm dev --host"
 	}
 }
