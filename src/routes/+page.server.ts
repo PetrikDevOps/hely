@@ -7,7 +7,8 @@ export const load: PageServerLoad = async () => {
   const roomSubstitutions = await prisma.roomSubstitution.findMany({
     where: {
       date: {
-        gte: dayjs().startOf('day').toDate()
+        gte: dayjs().startOf('day').toDate(),
+        lte: dayjs().endOf('week').toDate()
       }
     },
     include: {
@@ -23,7 +24,8 @@ export const load: PageServerLoad = async () => {
   const substitutions = await prisma.substitution.findMany({
     where: {
       date: {
-        gte: dayjs().startOf('day').toDate()
+        gte: dayjs().startOf('day').toDate(),
+        lte: dayjs().endOf('week').toDate()
       }
     },
     include: {
@@ -38,7 +40,17 @@ export const load: PageServerLoad = async () => {
     }
   });
 
-  const announcements = await prisma.announcement.findMany();
+  const announcements = await prisma.announcement.findMany({
+    where: {
+      date: {
+        gte: dayjs().startOf('day').toDate(),
+        lte: dayjs().endOf('week').toDate()
+      }
+    },
+    orderBy: {
+      date: 'asc'
+    }
+  });
 
   // group by date
   const groupedRoomSubstitutions = roomSubstitutions.reduce(
