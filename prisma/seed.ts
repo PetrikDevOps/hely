@@ -1,24 +1,27 @@
 interface MigrateJson {
   classes: {
     name: string;
-    id?: string;
   }[];
   classrooms: {
     name: string;
     short: string;
-    id?: string;
   }[];
   teachers: {
     name: string;
     short: string;
     email: string;
-    id?: string;
   }[];
   subjects: {
     name: string;
     short: string;
-    id?: string;
   }[];
+}
+
+interface DBData {
+  classes: { id: string }[];
+  classrooms: { id: string }[];
+  teachers: { id: string }[];
+  subjects: { id: string }[];
 }
 
 import migrateJson from './migrate-data.json';
@@ -33,86 +36,72 @@ const getRandomNumber = (min: number, max: number) => {
   return Math.floor(Math.random() * (max - min) + min);
 };
 
-const createFn = async (
-  prismaCreate: (_) => Promise<{ id: string }>,
-  data: { [key: string]: string }
-) => {
-  const obj = await prismaCreate({
-    data
-  });
-  return obj.id;
-};
-
-const createRandomSubstitutions = async (prisma: PrismaClient, data: MigrateJson, date: Date) => {
-  for (let i = 0; i < getRandomNumber(5, 30); i++) {
-    await prisma.substitution.create({
-      data: {
-        date,
-        teacherId: getRandomElement(data.teachers).id as string,
-        missingTeacherId: getRandomElement(data.teachers).id as string,
-        subjectId: getRandomElement(data.subjects).id as string,
-        roomId: getRandomElement(data.classrooms).id as string,
-        classId: getRandomElement(data.classes).id as string,
-        consolidated: Math.random() > 0.4,
-        lesson: Math.floor(Math.random() * 5) + 1
-      }
-    });
-  }
-};
-
-const createRandomRoomSubstitutions = async (
-  prisma: PrismaClient,
-  data: MigrateJson,
-  date: Date
-) => {
-  for (let i = 0; i < getRandomNumber(2, 20); i++) {
-    await prisma.roomSubstitution.create({
-      data: {
-        date,
-        fromRoomId: getRandomElement(data.classrooms).id as string,
-        toRoomId: getRandomElement(data.classrooms).id as string,
-        classId: getRandomElement(data.classes).id as string,
-        lesson: Math.floor(Math.random() * 5) + 1
-      }
-    });
-  }
-};
-
 const migrate = async () => {
   const data = migrateJson as MigrateJson;
+  const dbData: DBData = {
+    classes: [],
+    classrooms: [],
+    teachers: [],
+    subjects: []
+  }
   const prisma = new PrismaClient();
 
-  for (const c of data.classes) {
-    c.id = await createFn(prisma.class.create, { name: c.name });
-  }
+  dbData.classes = await prisma.class.createManyAndReturn({
+    data: data.classes.map(c => ({ name: c.name }))
+  })
 
-  for (const c of data.classrooms) {
-    c.id = await createFn(prisma.room.create, { name: c.name, short: c.short });
-  }
+  dbData.classrooms = await prisma.room.createManyAndReturn({
+    data: data.classrooms.map(c => ({ name: c.name, short: c.short }))
+  })
 
-  for (const c of data.teachers) {
-    c.id = await createFn(prisma.teacher.create, { name: c.name, short: c.short, email: c.email });
-  }
+  dbData.teachers = await prisma.teacher.createManyAndReturn({
+    data: data.teachers.map(t => ({ name: t.name, short: t.short, email: t.email }))
+  })
 
-  for (const c of data.subjects) {
-    c.id = await createFn(prisma.subject.create, { name: c.name, short: c.short });
-  }
+  dbData.subjects = await prisma.subject.createManyAndReturn({
+    data: data.subjects.map(s => ({ name: s.name, short: s.short }))
+  })
 
   for (let i = -15; i < 15; i++) {
-    const currentDate = dayjs().add(i, 'day').hour(0).minute(0).second(0).millisecond(0).toDate();
-    await createRandomSubstitutions(prisma, data, currentDate);
-    await createRandomRoomSubstitutions(prisma, data, currentDate);
+    const date = dayjs().add(i, 'day').hour(0).minute(0).second(0).millisecond(0).toDate();
+    const substitutions = Array.from({ length: getRandomNumber(5, 30) }, () => ({
+      date,
+      teacherId: getRandomElement(dbData.teachers).id,
+      missingTeacherId: getRandomElement(dbData.teachers).id,
+      subjectId: getRandomElement(dbData.subjects).id,
+      roomId: getRandomElement(dbData.classrooms).id,
+      classId: getRandomElement(dbData.classes).id,
+      consolidated: Math.random() > 0.4,
+      lesson: Math.floor(Math.random() * 5) + 1
+    }));
+    
+    await prisma.substitution.createMany({
+      data: substitutions
+    });
+
+    const roomSubstitutions = Array.from({ length: getRandomNumber(5, 30) }, () => ({
+      date,
+      fromRoomId: getRandomElement(dbData.classrooms).id,
+      toRoomId: getRandomElement(dbData.classrooms).id,
+      classId: getRandomElement(dbData.classes).id,
+      lesson: Math.floor(Math.random() * 5) + 1
+    }));
+
+    await prisma.roomSubstitution.createMany({
+      data: roomSubstitutions
+    });
+
     await prisma.announcement.create({
       data: {
-        date: currentDate,
-        title: 'Test announcement',
-        content:
-          "This is a test announcement for some day that I'm too lazy to template in here. Hello from seed.ts! :D"
+        date,
+        title: `Bejelentés ${i}`,
+        content: `Ez egy bejelentés a seed.ts-ből. Hello from seed.ts! :D`
       }
     });
-    console.log(` Created data for ${dayjs(currentDate).format('YYYY-MM-DD')}`);
-  }
 
+    console.log(` Day ${dayjs(date).format("YYYY-MM-DD")} done`);
+  }
+  
   await prisma.class.create({
     data: {
       id: 'test',
