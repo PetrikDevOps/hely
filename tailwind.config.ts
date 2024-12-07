@@ -11,8 +11,15 @@ export default {
         petrik: {
           1: '#41988a',
           2: '#718935',
-          3: '#99b18b',
+          3: '#99b18b'
         }
+      },
+      backgroundSize: {
+        'size-200': '200% 200%'
+      },
+      backgroundPosition: {
+        'pos-0': '0% 0%',
+        'pos-100': '100% 100%'
       }
     }
   },

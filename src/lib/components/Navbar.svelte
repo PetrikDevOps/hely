@@ -17,18 +17,18 @@
 
 <div class="flex flex-col md:pb-4">
   <div
-    class="ml-auto mr-auto flex w-full max-w-screen-xl flex-wrap items-center justify-between bg-opacity-80 p-4 transition-all ease-linear xl:rounded-b-xl md:bg-black md:bg-opacity-30 md:shadow-lg"
+    class="ml-auto mr-auto flex w-full max-w-screen-xl flex-wrap items-center justify-between bg-opacity-80 px-4 p-2 md:p-4 transition-all ease-linear xl:rounded-b-xl md:bg-black md:bg-opacity-30 md:shadow-lg"
     class:bg-black={dropdown}
   >
     <div class="flex items-center gap-4">
       <a href="/" class="text-2xl font-bold">Helyettesítés</a>
-      <ul class="hidden items-center gap-4 md:flex">
+      <ul class="hidden items-center gap-4 md:flex w-full">
         {#each menuItems as item}
           {#if (item.auth && data.session) || !item.auth}
-            <li>
+            <li class="w-full">
               <button
                 onclick={item.navFn}
-                class="flex items-center gap-1 rounded-lg p-2 transition-colors hover:bg-gray-200 hover:text-black"
+                class="flex items-center gap-1 rounded-lg p-2 w-full transition-colors hover:bg-gray-200 hover:text-black"
               >
                 <Icon icon={item.icon} />
                 <span>{item.name}</span>
@@ -48,7 +48,7 @@
       {:else}
         <button
           onclick={() => signIn('microsoft-entra-id')}
-          class="flex items-center gap-1 rounded-lg bg-emerald-600 bg-opacity-20 px-4 py-2 text-white transition-colors hover:bg-emerald-700 hover:bg-opacity-50"
+          class="flex items-center gap-1 rounded-lg bg-gradient-to-br bg-from-petrik-1 bg-to-petrik-2 transition-all bg-opacity-20 px-4 py-2 text-white duration-500 hover:bg-pos-100 bg-pos-0 bg-size-200"
         >
           <Icon icon="mdi:login" class="h-5 w-5" />
           <span>Bejelentkezés</span>
@@ -64,7 +64,7 @@
   </div>
   {#if dropdown}
     <div transition:fly={{ duration: 150, easing: linear }}>
-      <ul class="absolute flex w-full flex-col gap-6 bg-black bg-opacity-80 p-4 py-4 font-semibold">
+      <ul class="absolute flex w-full flex-col gap-3 bg-black bg-opacity-80 p-2 font-semibold">
         {#each menuItems as item}
           {#if (item.auth && data.session) || !item.auth}
             <li>

@@ -29,36 +29,39 @@
 
 <main class="min-h-full bg-gradient-to-br from-petrik-1 to-petrik-2 text-stone-100">
   <Navbar {data} />
-  <div class="container ml-auto mr-auto md:px-8 max-w-screen-xl">
+  <div class="container ml-auto mr-auto max-w-screen-xl md:px-8">
     {#if data.session && data.session.user && !data.session.user.classId && !data.session.user.isAdmin}
       <div class="absolute left-0 top-0 h-full w-full bg-black bg-opacity-90 text-white">
         {#await classesPromise}
           <Icon icon="mdi:loading" class="animate-spin text-3xl text-white" />
         {:then classes}
-          <div class="flex h-full flex-col gap-3 items-center justify-center">
-            <div class="bg-black bg-opacity-70 rounded-xl border border-petrik-2 p-8 md:p-16 flex flex-col gap-10">
-            <h1 class="text-xl md:text-4xl font-bold">Kérlek válassz osztályt!</h1>
-            <form method="POST" use:enhance action="?/setClass" class="flex gap-3">
-              <select
-                name="classId"
-                class="border text-sm rounded-lg block w-full p-2.5 bg-black bg-opacity-70 placeholder-gray-400 text-white transition-all focus:ring-petrik-2 focus:border-petrik-2"
-                placeholder="Válassz osztályt"
-              >
-                {#each classes as _class}
-                  <option value={_class.id}>{_class.name}</option>
-                {/each}
-              </select>
-              <button
-                type="submit"
-                disabled={classesPromise === undefined}
-                class="bg-petrik-2 disabled:bg-stone-600 bg-opacity-70 text-white rounded-lg p-2.5 text-center transition-all hover:bg-opacity-80 flex gap-2 items-center"
-                >
-              <Icon icon="mdi:content-save" class="text-xl" />
-                Mentés
-              </button>
-            </form>
-          </div>
-
+          <div class="flex h-full flex-col items-center justify-center gap-3">
+            <div
+              class="rounded-xl bg-gradient-to-b from-petrik-1 to-petrik-2 p-px"
+            >
+              <div class="rounded-[calc(0.75rem-1px)] bg-black p-10 flex flex-col gap-3">
+                <h1 class="text-xl font-bold md:text-4xl">Kérlek válassz osztályt!</h1>
+                <form method="POST" use:enhance action="?/setClass" class="flex gap-3">
+                  <select
+                    name="classId"
+                    class="block w-full rounded-lg border bg-black bg-opacity-70 p-2.5 text-sm text-white placeholder-gray-400 transition-all focus:border-petrik-2 focus:ring-petrik-2"
+                    placeholder="Válassz osztályt"
+                  >
+                    {#each classes as _class}
+                      <option value={_class.id}>{_class.name}</option>
+                    {/each}
+                  </select>
+                  <button
+                    type="submit"
+                    disabled={classesPromise === undefined}
+                    class="flex items-center gap-2 rounded-lg bg-gradient-to-br bg-from-petrik-1 bg-to-petrik-2 bg-opacity-20 px-4 py-2 duration-500 hover:bg-pos-100 bg-pos-0 bg-size-200 p-2.5 text-center text-white transition-all hover:bg-opacity-80 disabled:bg-stone-600"
+                  >
+                    <Icon icon="mdi:content-save" class="text-xl" />
+                    Mentés
+                  </button>
+                </form>
+              </div>
+            </div>
           </div>
         {/await}
       </div>
