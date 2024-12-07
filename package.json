@@ -8,7 +8,8 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "db:reset": "prisma migrate reset --force --skip-generate && prisma db push && tsx prisma/seed.ts",
     "format": "prettier --write .",
-    "lint": "prettier --check . && eslint ."
+    "lint": "prettier --check src && eslint src",
+    "precommit": "pnpm run check && pnpm run lint && pnpm run format"
   },
   "devDependencies": {
     "@eslint/compat": "^1.2.3",
