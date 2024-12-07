@@ -17,7 +17,7 @@
 
 <div class="flex flex-col md:pb-4">
   <div
-    class="ml-auto mr-auto flex w-full max-w-screen-xl flex-wrap items-center justify-between bg-opacity-80 p-4 transition-all ease-linear md:rounded-b-lg md:border md:border-t-0 md:border-stone-300 md:bg-black md:bg-opacity-30 md:shadow-lg"
+    class="ml-auto mr-auto flex w-full max-w-screen-xl flex-wrap items-center justify-between bg-opacity-80 p-4 transition-all ease-linear xl:rounded-b-xl md:bg-black md:bg-opacity-30 md:shadow-lg"
     class:bg-black={dropdown}
   >
     <div class="flex items-center gap-4">
