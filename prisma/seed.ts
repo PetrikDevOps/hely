@@ -95,7 +95,7 @@ const migrate = async () => {
   }
 
   for (let i = -15; i < 15; i++) {
-    const currentDate = dayjs().add(i, 'day').toDate();
+    const currentDate = dayjs().add(i, 'day').hour(0).minute(0).second(0).millisecond(0).toDate();
     await createRandomSubstitutions(prisma, data, currentDate);
     await createRandomRoomSubstitutions(prisma, data, currentDate);
     await prisma.announcement.create({ data: { date: currentDate, title: 'Test announcement', content: "This is a test announcement for some day that I'm too lazy to template in here. Hello from seed.ts! :D" } });
@@ -114,9 +114,12 @@ const migrate = async () => {
 };
 
 console.log('󰹢 Seeding...');
+// time how long it takes
+const start = Date.now();
 migrate()
   .then((data) => {
-    console.log('✔ Database seeded');
+    const end = Date.now();
+    console.log(`✔ Database seeded in ${(end - start)/1000}s`);
     console.info(
       `Created:\n- ${data.classes} classes\n- ${data.classrooms} classrooms\n- ${data.teachers} teachers\n- ${data.subjects} subjects\n- ${data.substitutions} substitutions\n- ${data.roomSubstitutions} room substitutions`
     );
