@@ -1,8 +1,14 @@
-import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
 import prisma from '$lib/server/prisma';
+import { createDataResponse } from '$lib/server/utils';
 
-export async function GET() {
-	const classes = await prisma.class.findMany();
+export const GET: RequestHandler = async () => {
+  const classes = await prisma.class.findMany({
+    select: {
+      id: true,
+      name: true
+    }
+  });
 
-  return json(classes);
+  return createDataResponse(classes);
 }
