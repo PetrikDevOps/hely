@@ -18,6 +18,20 @@
 		}
 	},
 
+	"customizations": {
+		"vscode": {
+			"extensions": [
+			"bradlc.vscode-tailwindcss",
+			"ardenivanov.svelte-intellisense",
+			"svelte.svelte-vscode",
+			"Prisma.prisma",
+			"vunguyentuan.vscode-postcss",
+			"wayou.vscode-todo-highlight",
+			"csstools.postcss"
+		]
+		}
+	},
+
 	"forwardPorts": [5173],
 
 	"postCreateCommand": "pnpm install && pnpm db:reset",
