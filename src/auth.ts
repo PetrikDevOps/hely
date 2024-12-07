@@ -1,9 +1,15 @@
 import { SvelteKitAuth } from '@auth/sveltekit';
-import { PrismaAdapter } from "@auth/prisma-adapter"
+import { PrismaAdapter } from '@auth/prisma-adapter';
 import EntraID from '@auth/sveltekit/providers/microsoft-entra-id';
 import prisma from '$lib/server/prisma';
 
-import { AUTH_SECRET, ENTRA_ID_ID, ENTRA_ID_ISSUER, ENTRA_ID_SECRET, ROOT_USER_ID } from '$env/static/private';
+import {
+  AUTH_SECRET,
+  ENTRA_ID_ID,
+  ENTRA_ID_ISSUER,
+  ENTRA_ID_SECRET,
+  ROOT_USER_ID
+} from '$env/static/private';
 
 export const { handle, signIn, signOut } = SvelteKitAuth({
   secret: AUTH_SECRET,

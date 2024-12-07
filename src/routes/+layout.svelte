@@ -5,7 +5,7 @@
   import type { Session } from '@auth/sveltekit';
   import Icon from '@iconify/svelte';
   import type { Prisma } from '@prisma/client';
-  import { onMount } from 'svelte';
+  import { onMount, type Snippet } from 'svelte';
 
   interface SessionWithAdapterUser extends Session {
     user: Prisma.UserGetPayload<{
@@ -19,9 +19,18 @@
     }>;
   }
 
-  let { children, data }: { children: any; data: { session: SessionWithAdapterUser } } = $props();
+  let { children, data }: { children: Snippet; data: { session: SessionWithAdapterUser } } =
+    $props();
 
-  let classesPromise: Promise<any> = $state(new Promise(() => {}));
+  let classesPromise: Promise<
+    Prisma.ClassGetPayload<{
+      select: {
+        id: true;
+        name: true;
+      };
+    }>[]
+  > = $state(new Promise(() => {}));
+
   onMount(() => {
     classesPromise = fetch('/api/class').then((res) => res.json());
   });
@@ -36,10 +45,8 @@
           <Icon icon="mdi:loading" class="animate-spin text-3xl text-white" />
         {:then classes}
           <div class="flex h-full flex-col items-center justify-center gap-3">
-            <div
-              class="rounded-xl bg-gradient-to-b from-petrik-1 to-petrik-2 p-px"
-            >
-              <div class="rounded-[calc(0.75rem-1px)] bg-black p-10 flex flex-col gap-3">
+            <div class="rounded-xl bg-gradient-to-b from-petrik-1 to-petrik-2 p-px">
+              <div class="flex flex-col gap-3 rounded-[calc(0.75rem-1px)] bg-black p-10">
                 <h1 class="text-xl font-bold md:text-4xl">Kérlek válassz osztályt!</h1>
                 <form method="POST" use:enhance action="?/setClass" class="flex gap-3">
                   <select
@@ -54,7 +61,7 @@
                   <button
                     type="submit"
                     disabled={classesPromise === undefined}
-                    class="flex items-center gap-2 rounded-lg bg-gradient-to-br bg-from-petrik-1 bg-to-petrik-2 bg-opacity-20 px-4 py-2 duration-500 hover:bg-pos-100 bg-pos-0 bg-size-200 p-2.5 text-center text-white transition-all hover:bg-opacity-80 disabled:bg-stone-600"
+                    class="bg-from-petrik-1 bg-to-petrik-2 flex items-center gap-2 rounded-lg bg-opacity-20 bg-gradient-to-br bg-size-200 bg-pos-0 p-2.5 px-4 py-2 text-center text-white transition-all duration-500 hover:bg-opacity-80 hover:bg-pos-100 disabled:bg-stone-600"
                   >
                     <Icon icon="mdi:content-save" class="text-xl" />
                     Mentés
