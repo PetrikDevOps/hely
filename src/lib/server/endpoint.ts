@@ -177,3 +177,138 @@ export function createParameterizedPrismaEndpoint (
     }
   };
 }
+
+// Type for filter configuration
+type FilterConfig = {
+  field: string;
+  type: 'string' | 'number' | 'boolean' | 'date';
+  operator?: 'equals' | 'contains' | 'gt' | 'gte' | 'lt' | 'lte' | 'in';
+  required?: boolean;
+  transform?: (value: string) => any;
+};
+
+// Configuration for the endpoint handler
+interface FilteredEndpointConfig<T extends PrismaModel> {
+  model: T;
+  filters: FilterConfig[];
+  orderBy?: Record<string, 'asc' | 'desc'>;
+  dateField?: string;
+  include?: Record<string, boolean>;
+}
+
+// Parse and validate filter value based on its type
+function parseFilterValue(value: string, type: FilterConfig['type'], transform?: (value: string) => any): any {
+  if (transform) {
+    return transform(value);
+  }
+
+  switch (type) {
+    case 'number':
+      { const num = Number(value);
+      if (isNaN(num)) throw new Error('Invalid number format');
+      return num; }
+    case 'boolean':
+      if (value !== 'true' && value !== 'false') throw new Error('Invalid boolean format');
+      return value === 'true';
+    case 'date':
+      return parseDate(value).toDate();
+    default:
+      return value;
+  }
+}
+
+// Build Prisma where clause from filter parameters
+function buildWhereClause(
+  searchParams: URLSearchParams,
+  filters: FilterConfig[],
+  dateField: string
+): Record<string, any> {
+  const where: Record<string, any> = {};
+
+  // Handle date range if dateField is specified
+  const startDate = searchParams.get('startDate');
+  const endDate = searchParams.get('endDate');
+
+  if (startDate && endDate) {
+    where[dateField] = {
+      gte: parseDate(startDate).startOf('day').toDate(),
+      lte: parseDate(endDate).endOf('day').toDate()
+    };
+  } else {
+    where[dateField] = {
+      gte: dayjs().startOf('day').toDate()
+    };
+  }
+
+  // Process each configured filter
+  for (const filter of filters) {
+    const value = searchParams.get(filter.field);
+
+    // Check if required filter is missing
+    if (filter.required && !value) {
+      throw new Error(`Missing required filter: ${filter.field}`);
+    }
+
+    // Skip if filter value is not provided
+    if (!value) continue;
+
+    // Handle array values for 'in' operator
+    if (filter.operator === 'in') {
+      const values = value.split(',').map(v => parseFilterValue(v.trim(), filter.type, filter.transform));
+      where[filter.field] = { in: values };
+      continue;
+    }
+
+    // Parse the filter value
+    const parsedValue = parseFilterValue(value, filter.type, filter.transform);
+
+    // Build the where clause based on the operator
+    switch (filter.operator) {
+      case 'contains':
+        where[filter.field] = { contains: parsedValue };
+        break;
+      case 'gt':
+        where[filter.field] = { gt: parsedValue };
+        break;
+      case 'gte':
+        where[filter.field] = { gte: parsedValue };
+        break;
+      case 'lt':
+        where[filter.field] = { lt: parsedValue };
+        break;
+      case 'lte':
+        where[filter.field] = { lte: parsedValue };
+        break;
+      default:
+        where[filter.field] = parsedValue;
+    }
+  }
+
+  return where;
+}
+
+// Create a filtered Prisma endpoint handler
+export function createFilteredPrismaEndpoint<T extends PrismaModel>(
+  config: FilteredEndpointConfig<T>
+): RequestHandler {
+  return async ({ url }) => {
+    try {
+      const dateField = config.dateField || 'date';
+
+      // Build the where clause from filter parameters
+      const where = buildWhereClause(url.searchParams, config.filters, dateField);
+
+      // Fetch data using Prisma
+      const results = await config.model.findMany({
+        where,
+        include: config.include,
+        orderBy: config.orderBy || { [dateField]: 'asc' }
+      });
+
+      return createDataResponse(results);
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'An unknown error occurred';
+      return createErrorResponse(400, errorMessage);
+    }
+  };
+}
