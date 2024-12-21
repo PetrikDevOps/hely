@@ -7,7 +7,7 @@
   import { capitalize } from '$lib/utils';
 
   let { data } = $props();
-  </script>
+</script>
 
 <main class="flex flex-col gap-3 px-2 pb-10 md:gap-6 md:px-0">
   {#each data.announcements as announcement}

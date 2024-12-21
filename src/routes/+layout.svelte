@@ -1,7 +1,6 @@
 <script lang="ts">
   import { enhance } from '$app/forms';
   import Navbar from '$lib/components/Navbar.svelte';
-  import type { SessionWithAdapterUser } from '$lib/server/prisma';
   import '../app.css';
   import Icon from '@iconify/svelte';
   import { type Snippet } from 'svelte';
@@ -13,7 +12,7 @@
 
 <main class="min-h-full bg-gradient-to-br from-petrik-1 to-petrik-2 text-stone-100">
   <Navbar {data} />
-  <div class="container ml-auto mr-auto max-w-screen-xl md:px-8">
+  <div class="container px-3 pt-4 ml-auto mr-auto max-w-screen-xl md:px-8">
     {#if data.session && data.session.user && !data.session.user.classId && !data.session.user.isAdmin && data.classes}
       <div class="absolute left-0 top-0 h-full w-full bg-black bg-opacity-90 text-white">
           <div class="flex h-full flex-col items-center justify-center gap-3">
