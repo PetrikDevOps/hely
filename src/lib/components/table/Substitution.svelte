@@ -9,7 +9,7 @@
     { name: 'Hiányzik', icon: 'ic:round-person-off' },
     { name: 'Helyettesít', icon: 'ic:round-person' },
     { name: 'Tantárgy', icon: 'akar-icons:book', hideMobile: true },
-    { name: 'Terem', icon: 'mdi:place', hideMobile: true },
+    { name: 'Terem', icon: 'mdi:place' },
     { name: '', icon: 'material-symbols:merge', center: true }
   ];
 </script>
@@ -22,8 +22,8 @@
       <td>{row.missingTeacher.short}</td>
       <td class="hidden md:table-cell">{row.teacher.name}</td>
       <td class="md:hidden">{row.teacher.short}</td>
-      <td class="hidden md:table-cell">{row.subject.short}</td>
-      <td class="hidden md:table-cell">{row.room.short}</td>
+      <td class="hidden md:table-cell">{row.subject.name}</td>
+      <td>{row.room.short}</td>
 
       <td class="">
         {#if row.consolidated}
