@@ -7,7 +7,8 @@ const config = {
   roomSubstitutionCountRange: { min: 0, max: 10 },
   announcementCountRange: { min: 0, max: 2 },
   daysAhead: 15,
-  startDate: dayjs().toDate()
+  startDate: dayjs().toDate(),
+  createDummyData: false
 };
 
 interface MigrateJson {
@@ -69,6 +70,17 @@ const migrate = async () => {
   dbData.subjects = await prisma.subject.createManyAndReturn({
     data: data.subjects.map((s) => ({ name: s.name, short: s.short }))
   });
+
+  if (!config.createDummyData) {
+    return {
+      classes: await prisma.class.count(),
+      classrooms: await prisma.room.count(),
+      teachers: await prisma.teacher.count(),
+      subjects: await prisma.teacher.count(),
+      substitutions: await prisma.substitution.count(),
+      roomSubstitutions: await prisma.roomSubstitution.count()
+    };
+  }
 
   for (let i = 0; i < config.daysAhead; i++) {
     const date = dayjs().add(i, 'day').hour(0).minute(0).second(0).millisecond(0).toDate();
