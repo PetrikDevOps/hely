@@ -366,26 +366,26 @@ export class KretaUtil {
       default:
         return null;
     }
-  }
+  };
 
   public static getWeekDay = (value: CellValue) => {
     switch (value) {
       case 'Hétfő':
-        return "Monday";
+        return 'Monday';
       case 'Kedd':
-        return "Tuesday";
+        return 'Tuesday';
       case 'Szerda':
-        return "Wednesday";
+        return 'Wednesday';
       case 'Csütörtök':
-        return "Thursday";
+        return 'Thursday';
       case 'Péntek':
-        return "Friday";
+        return 'Friday';
       case 'Szombat':
-        return "Saturday";
+        return 'Saturday';
       case 'Vasárnap':
-        return "Sunday";
+        return 'Sunday';
       default:
         return null;
     }
-  }
+  };
 }

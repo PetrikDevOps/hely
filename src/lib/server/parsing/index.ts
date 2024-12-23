@@ -3,7 +3,7 @@ import type { Workbook } from 'exceljs';
 import { KretaUtil } from './utils';
 import prisma from '../prisma';
 import type { Day, WeekType } from '@prisma/client';
-import { FALLBACK_EMAIL } from "$env/static/private";
+import { FALLBACK_EMAIL } from '$env/static/private';
 
 const siftClasses = async (classes: string[][]) => {
   for (const [, name] of classes) {
@@ -89,18 +89,14 @@ export const parseKretaExport = async (wb: Workbook): Promise<ActionResult> => {
     };
   }
 
-  const classes = classSheet
-    .getSheetValues()
-    .filter((row): row is string[] => Array.isArray(row));
+  const classes = classSheet.getSheetValues().filter((row): row is string[] => Array.isArray(row));
   const subjects = subjectSheet
     .getSheetValues()
     .filter((row): row is string[] => Array.isArray(row));
   const teachers = teacherSheet
     .getSheetValues()
     .filter((row): row is string[] => Array.isArray(row));
-  const rooms = roomSheet
-    .getSheetValues()
-    .filter((row): row is string[] => Array.isArray(row));
+  const rooms = roomSheet.getSheetValues().filter((row): row is string[] => Array.isArray(row));
 
   await Promise.all([
     siftClasses(classes),
@@ -137,18 +133,18 @@ export const parseKretaExport = async (wb: Workbook): Promise<ActionResult> => {
       console.log(weekType, weekDay, lessonNumber, className, subjectName, teacherName, roomName);
       return;
     }
-      lessonsToCreate.push({
-        weekType,
-        weekDay,
-        lessonNumber,
-        className,
-        subjectName,
-        teacherName,
-        roomName
-      });
+    lessonsToCreate.push({
+      weekType,
+      weekDay,
+      lessonNumber,
+      className,
+      subjectName,
+      teacherName,
+      roomName
+    });
   });
 
-  console.log(lessonsToCreate.length, "lessons to create");
+  console.log(lessonsToCreate.length, 'lessons to create');
 
   // create lessons
 
