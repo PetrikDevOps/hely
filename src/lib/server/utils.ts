@@ -1,19 +1,22 @@
-import { json } from "@sveltejs/kit";
+import { json } from '@sveltejs/kit';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const createDataResponse = (data: any) => {
   return json({
-    status: "success",
+    status: 'success',
     count: data.length,
-    data: data,
+    data: data
   });
-}
+};
 
 export const createErrorResponse = (status: number, message: string) => {
-  return json({
-    status: "error",
-    message: message,
-  }, {
-    status: status,
-  });
-}
+  return json(
+    {
+      status: 'error',
+      message: message
+    },
+    {
+      status: status
+    }
+  );
+};
