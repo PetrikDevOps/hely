@@ -11,4 +11,4 @@ export const GET: RequestHandler = async () => {
   });
 
   return createDataResponse(classes);
-}
+};

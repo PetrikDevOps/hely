@@ -1,11 +1,11 @@
-import { createParameterizedPrismaEndpoint } from '$lib/server/endpoint';
+import { createPrismaEndpoint } from '$lib/server/endpoint';
 import prisma from '$lib/server/prisma';
 
-export const GET = createParameterizedPrismaEndpoint({
+export const GET = createPrismaEndpoint({
   model: prisma.substitution,
-  paramName: 'teacherId',
-  dbField: 'missingTeacherId',
-  paramValidation: {
+  paramConfig: {
+    name: 'teacherId',
+    dbField: 'missingTeacherId',
     checkExists: true,
     existsModel: prisma.teacher
   },
@@ -16,8 +16,5 @@ export const GET = createParameterizedPrismaEndpoint({
     room: true,
     class: true
   },
-  orderBy: [
-    { date: 'asc' },
-    { lesson: 'asc' }
-  ]
+  orderBy: [{ date: 'asc' }, { lesson: 'asc' }]
 });

@@ -6,4 +6,4 @@ export const GET: RequestHandler = async () => {
   const teachers = await prisma.teacher.findMany({});
 
   return createDataResponse(teachers);
-}
+};

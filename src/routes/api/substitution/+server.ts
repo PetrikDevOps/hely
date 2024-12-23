@@ -1,8 +1,8 @@
 // src/routes/api/events/+server.ts
-import { createFilteredPrismaEndpoint } from '$lib/server/endpoint';
+import { createPrismaEndpoint } from '$lib/server/endpoint';
 import prisma from '$lib/server/prisma';
 
-export const GET = createFilteredPrismaEndpoint({
+export const GET = createPrismaEndpoint({
   model: prisma.substitution,
   include: {
     teacher: true,
@@ -21,4 +21,4 @@ export const GET = createFilteredPrismaEndpoint({
     { field: 'subjectId', operator: 'equals', type: 'string' },
     { field: 'roomId', operator: 'equals', type: 'string' }
   ]
-})
+});
