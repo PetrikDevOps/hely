@@ -9,3 +9,7 @@ body {
   height: 100%;
   font-family: 'Inter', sans-serif;
 }
+
+.button {
+  @apply flex gap-1 rounded-lg bg-petrik-1 p-2 transition-colors hover:bg-stone-200;
+}

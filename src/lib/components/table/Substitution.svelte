@@ -27,8 +27,8 @@
 
       <td class="">
         {#if row.consolidated}
-        <div class="flex justify-center items-center">
-          <Icon icon="akar-icons:check" class="text-green-500 self-center" />
+          <div class="flex items-center justify-center">
+            <Icon icon="akar-icons:check" class="self-center text-green-500" />
           </div>
         {/if}
       </td>

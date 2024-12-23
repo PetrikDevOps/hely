@@ -6,7 +6,7 @@
   const tableHeaders = [
     { name: '', icon: 'akar-icons:clock' },
     { name: 'Honnan', icon: 'lucide:arrow-up-from-line' },
-    { name: 'Hova', icon: 'lucide:arrow-down-from-line' },
+    { name: 'Hova', icon: 'lucide:arrow-down-from-line' }
   ];
 </script>
 

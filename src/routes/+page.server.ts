@@ -1,6 +1,6 @@
 import type { PageServerLoad, Actions } from './$types';
 import type { Announcement, RoomSubstitution, Substitution } from '@prisma/client';
-import prisma from '$lib/server/prisma';
+import prisma, { type SessionWithAdapterUser } from '$lib/server/prisma';
 import { dayjs } from '$lib/utils';
 import { fail } from '@sveltejs/kit';
 
@@ -40,17 +40,28 @@ const groupItemsByDate = (
   });
 };
 
-export const load: PageServerLoad = async () => {
-  const where = { date: getDateRange() };
+export const load: PageServerLoad = async ({ locals, url }) => {
+  const where: { date: { gt: Date; lt: Date }; classId?: string } = { date: getDateRange() };
+
+  const whereUser: { date: { gt: Date; lt: Date }; classId?: string } = { date: getDateRange() };
+  const session = (await locals.auth()) as SessionWithAdapterUser;
+  if (session && session.user) {
+    if (session.user.classId) whereUser.classId = session.user.classId;
+  }
+
+  if (url.searchParams.has('all')) {
+    console.log('ASD');
+    delete whereUser.classId;
+  }
 
   const [announcements, roomSubstitutions, substitutions] = await Promise.all([
     prisma.announcement.findMany({ where }),
     prisma.roomSubstitution.findMany({
-      where,
+      where: whereUser,
       include: { fromRoom: true, toRoom: true, class: true }
     }),
     prisma.substitution.findMany({
-      where,
+      where: whereUser,
       include: { teacher: true, missingTeacher: true, subject: true, room: true, class: true }
     })
   ]);

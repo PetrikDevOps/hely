@@ -33,7 +33,7 @@ interface EndpointConfig<T extends PrismaModel> {
 
 function parseFilterValue(value: string, type: string, transform?: (value: string) => any): any {
   if (transform) return transform(value);
-  
+
   switch (type) {
     case 'number': {
       const num = Number(value);
@@ -57,7 +57,7 @@ export function createPrismaEndpoint<T extends PrismaModel>(
     try {
       const where: Record<string, any> = { ...config.additionalWhere };
       const dateField = config.dateField || 'date';
-      
+
       // Handle parameter-based filtering
       if (config.paramConfig) {
         const paramValue = params[config.paramConfig.name];
@@ -107,7 +107,7 @@ export function createPrismaEndpoint<T extends PrismaModel>(
       if (config.filters) {
         for (const filter of config.filters) {
           const value = url.searchParams.get(filter.field);
-          
+
           if (filter.required && !value) {
             throw new Error(`Missing required filter: ${filter.field}`);
           }
@@ -115,15 +115,15 @@ export function createPrismaEndpoint<T extends PrismaModel>(
 
           if (filter.operator === 'in') {
             where[filter.field] = {
-              in: value.split(',').map(v => parseFilterValue(v.trim(), filter.type, filter.transform))
+              in: value
+                .split(',')
+                .map((v) => parseFilterValue(v.trim(), filter.type, filter.transform))
             };
             continue;
           }
 
           const parsedValue = parseFilterValue(value, filter.type, filter.transform);
-          where[filter.field] = filter.operator 
-            ? { [filter.operator]: parsedValue }
-            : parsedValue;
+          where[filter.field] = filter.operator ? { [filter.operator]: parsedValue } : parsedValue;
         }
       }
 
