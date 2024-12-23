@@ -1,0 +1,14 @@
+.env.local
+.svelte-kit/
+node_modules/
+static/
+.idea/
+.devcontainer/
+.vscode/
+.prettierrc
+eslint.config.js
+.prettierignore
+README.md
+.env
+.gitignore
+.git
