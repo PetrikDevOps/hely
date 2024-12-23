@@ -1,88 +1,67 @@
 import type { PageServerLoad, Actions } from './$types';
+import type { Announcement, RoomSubstitution, Substitution } from '@prisma/client';
 import prisma from '$lib/server/prisma';
-import dayjs from 'dayjs';
+import { dayjs } from '$lib/utils';
 import { fail } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async () => {
-  const roomSubstitutions = await prisma.roomSubstitution.findMany({
-    where: {
-      date: {
-        gte: dayjs().startOf('day').toDate(),
-        lte: dayjs().endOf('week').toDate()
-      }
-    },
-    include: {
-      fromRoom: true,
-      toRoom: true,
-      class: true
-    },
-    orderBy: {
-      lesson: 'asc'
-    }
-  });
+interface GroupedData {
+  roomSubstitutions: RoomSubstitution[];
+  substitutions: Substitution[];
+  announcements: Announcement[];
+}
 
-  const substitutions = await prisma.substitution.findMany({
-    where: {
-      date: {
-        gte: dayjs().startOf('day').toDate(),
-        lte: dayjs().endOf('week').toDate()
-      }
-    },
-    include: {
-      teacher: true,
-      missingTeacher: true,
-      subject: true,
-      room: true,
-      class: true
-    },
-    orderBy: {
-      lesson: 'asc'
-    }
-  });
+type GroupedByDate = Record<string, GroupedData>;
 
-  const announcements = await prisma.announcement.findMany({
-    where: {
-      date: {
-        gte: dayjs().startOf('day').toDate(),
-        lte: dayjs().endOf('week').toDate()
-      }
-    },
-    orderBy: {
-      date: 'asc'
-    }
-  });
-
-  // group by date
-  const groupedRoomSubstitutions = roomSubstitutions.reduce(
-    (acc, substitution) => {
-      const date = substitution.date.toISOString().split('T')[0];
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-      acc[date].push(substitution);
-      return acc;
-    },
-    {} as Record<string, typeof roomSubstitutions>
-  );
-
-  // group by date
-  const groupedSubstitutions = substitutions.reduce(
-    (acc, substitution) => {
-      const date = substitution.date.toISOString().split('T')[0];
-      if (!acc[date]) {
-        acc[date] = [];
-      }
-      acc[date].push(substitution);
-      return acc;
-    },
-    {} as Record<string, typeof substitutions>
-  );
-
+// Helper functions
+const getDateRange = () => {
   return {
-    roomSubstitutions: groupedRoomSubstitutions,
-    substitutions: groupedSubstitutions,
-    announcements
+    gt: dayjs().startOf('day').toDate(),
+    lt: dayjs().endOf('week').toDate()
   };
+};
+
+const createEmptyGroup = (): GroupedData => ({
+  roomSubstitutions: [],
+  substitutions: [],
+  announcements: []
+});
+
+const groupItemsByDate = (
+  items: (RoomSubstitution | Substitution | Announcement)[],
+  groupedData: GroupedByDate,
+  key: keyof GroupedData
+) => {
+  items.forEach((item) => {
+    const date = item.date.toISOString();
+    if (!groupedData[date]) {
+      groupedData[date] = createEmptyGroup();
+    }
+    (groupedData[date][key] as typeof items).push(item);
+  });
+};
+
+export const load: PageServerLoad = async () => {
+  const where = { date: getDateRange() };
+
+  const [announcements, roomSubstitutions, substitutions] = await Promise.all([
+    prisma.announcement.findMany({ where }),
+    prisma.roomSubstitution.findMany({
+      where,
+      include: { fromRoom: true, toRoom: true, class: true }
+    }),
+    prisma.substitution.findMany({
+      where,
+      include: { teacher: true, missingTeacher: true, subject: true, room: true, class: true }
+    })
+  ]);
+
+  const groupedByDate: GroupedByDate = {};
+
+  groupItemsByDate(roomSubstitutions, groupedByDate, 'roomSubstitutions');
+  groupItemsByDate(substitutions, groupedByDate, 'substitutions');
+  groupItemsByDate(announcements, groupedByDate, 'announcements');
+
+  return { groupedByDate };
 };
 
 export const actions: Actions = {

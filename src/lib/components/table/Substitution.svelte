@@ -2,7 +2,7 @@
   import Icon from '@iconify/svelte';
   import Base from './Base.svelte';
 
-  let { substitutions, date } = $props();
+  let { substitutions } = $props();
 
   const tableHeaders = [
     { name: '', icon: 'akar-icons:clock' },
@@ -10,12 +10,11 @@
     { name: 'Helyettesít', icon: 'ic:round-person' },
     { name: 'Tantárgy', icon: 'akar-icons:book', hideMobile: true },
     { name: 'Terem', icon: 'mdi:place', hideMobile: true },
-    { name: 'Osztály', icon: 'fluent:people-team-16-filled' },
-    { name: 'ÖVH', icon: 'material-symbols:merge', center: true, hideMobile: true }
+    { name: '', icon: 'material-symbols:merge', center: true }
   ];
 </script>
 
-<Base data={substitutions} {date} {tableHeaders} title="Helyettesítések">
+<Base data={substitutions} {tableHeaders} title="Helyettesítések">
   {#each substitutions as row, index}
     {@const odd = index % 2 == 0}
     <tr class="bg-black" class:bg-opacity-30={odd} class:bg-opacity-20={!odd}>
@@ -25,10 +24,12 @@
       <td class="md:hidden">{row.teacher.short}</td>
       <td class="hidden md:table-cell">{row.subject.short}</td>
       <td class="hidden md:table-cell">{row.room.short}</td>
-      <td>{row.class.name}</td>
-      <td class="hidden text-center md:table-cell">
+
+      <td class="">
         {#if row.consolidated}
-          <Icon icon="akar-icons:check" class="text-green-500" />
+        <div class="flex justify-center items-center">
+          <Icon icon="akar-icons:check" class="text-green-500 self-center" />
+          </div>
         {/if}
       </td>
     </tr>

@@ -1,24 +1,22 @@
 <script lang="ts">
   import Base from './Base.svelte';
 
-  let { roomSubstitutions, date } = $props();
+  let { roomSubstitutions } = $props();
 
   const tableHeaders = [
     { name: '', icon: 'akar-icons:clock' },
     { name: 'Honnan', icon: 'lucide:arrow-up-from-line' },
     { name: 'Hova', icon: 'lucide:arrow-down-from-line' },
-    { name: 'Osztály', icon: 'fluent:people-team-16-filled' }
   ];
 </script>
 
-<Base data={roomSubstitutions} {date} {tableHeaders} title="Teremcserék">
+<Base data={roomSubstitutions} {tableHeaders} title="Teremcserék">
   {#each roomSubstitutions as row, index}
     {@const odd = index % 2 == 0}
     <tr class="bg-black" class:bg-opacity-30={odd} class:bg-opacity-20={!odd}>
       <td class="ml-1! font-bold">{row.lesson}.</td>
       <td>{row.fromRoom.short}</td>
       <td>{row.toRoom.short}</td>
-      <td>{row.class.name}</td>
     </tr>
   {/each}
 </Base>
