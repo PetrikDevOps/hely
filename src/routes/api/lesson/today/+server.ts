@@ -5,9 +5,7 @@ import { getDay } from '$lib/utils';
 
 export const GET = createPrismaEndpoint({
   model: prisma.lesson,
-  filters: [
-    { field: 'classId', operator: 'equals', type: 'string' },
-  ],
+  filters: [{ field: 'classId', operator: 'equals', type: 'string' }],
   dateHandling: {
     enabled: false
   },

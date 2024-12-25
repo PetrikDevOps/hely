@@ -5,5 +5,8 @@ import prisma from '$lib/server/prisma';
 export const GET = createPrismaEndpoint({
   model: prisma.announcement,
   orderBy: [{ date: 'desc' }],
-  dateField: 'date'
+  dateHandling: {
+    enabled: true,
+    field: 'date'
+  }
 });

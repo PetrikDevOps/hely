@@ -15,13 +15,13 @@ body {
 }
 
 .input {
-  @apply w-full p-2 rounded-lg shadow-lg;
+  @apply w-full rounded-lg p-2 shadow-lg;
   @apply bg-black bg-opacity-10;
-  @apply focus:ring-0 focus:outline-none focus:border-petrik-1;
+  @apply focus:border-petrik-1 focus:outline-none focus:ring-0;
   @apply transition-colors duration-200;
   @apply placeholder-gray-500;
 }
 
 .remove-focus {
-  @apply focus:ring-0 focus:outline-none focus:border-transparent;
+  @apply focus:border-transparent focus:outline-none focus:ring-0;
 }

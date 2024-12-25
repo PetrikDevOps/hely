@@ -3,7 +3,7 @@ import type { Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 import exceljs from 'exceljs';
 import { parseKretaExport } from '$lib/server/parsing';
-import { dayjs, parseDate } from "$lib/utils";
+import { parseDate } from '$lib/utils';
 import prisma from '$lib/server/prisma';
 
 export const load = async ({ parent }) => {

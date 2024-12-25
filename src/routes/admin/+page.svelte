@@ -1,7 +1,7 @@
 <script lang="ts">
   import KretaImportPicker from '$lib/components/admin/KretaImportPicker.svelte';
   import { enhance } from '$app/forms';
-  import { dayjs, getDay } from '$lib/utils';
+  import { getDay } from '$lib/utils';
   import Icon from '@iconify/svelte';
 
   let { data } = $props();
@@ -14,7 +14,6 @@
   let subCancelled = $state(false);
   let subRoomId = $state('');
 
-  let loading = $state(false);
   let error = $state<string | null>(null);
   let success = $state<string | null>(null);
 
@@ -50,46 +49,44 @@
     <h1 class="text-xl font-bold">Új helyettesítés</h1>
 
     <form
-    use:enhance={({ formData }) => {
-      loading = true;
-      error = null;
-      success = null;
+      use:enhance={({ formData }) => {
+        error = null;
+        success = null;
 
-      const lesson = data.lessons.filter((l) => l.id === subLessonId)[0];
+        const lesson = data.lessons.filter((l) => l.id === subLessonId)[0];
 
-      const subDateVal = subDate + 'T00:00:00.000Z';
+        const subDateVal = subDate + 'T00:00:00.000Z';
 
-      formData.set("date", subDateVal);
-      console.log(subDateVal);
-      formData.set("missingTeacherId", lesson.teacherId);
-      formData.set("teacherId", subTeacherId);
-      formData.set("subjectId", lesson.subjectId);
-      formData.set("roomId", subRoomId);
-      formData.set("classId", subClassId);
-      formData.set("consolidated", String(subConsolidated));
-      formData.set("cancelled", String(subCancelled));
-      formData.set("lessonId", subLessonId);
-      formData.set("lesson", lesson.lesson.toString());
+        formData.set('date', subDateVal);
+        console.log(subDateVal);
+        formData.set('missingTeacherId', lesson.teacherId);
+        formData.set('teacherId', subTeacherId);
+        formData.set('subjectId', lesson.subjectId);
+        formData.set('roomId', subRoomId);
+        formData.set('classId', subClassId);
+        formData.set('consolidated', String(subConsolidated));
+        formData.set('cancelled', String(subCancelled));
+        formData.set('lessonId', subLessonId);
+        formData.set('lesson', lesson.lesson.toString());
 
-      return async ({ result, update }) => {
-        loading = false;
-  
-        if (result.type === 'failure') {
-          error = result.data?.message as string;
-          success = null;
-        } else if (result.type === 'success') {
-          success =
-            ((result.data?.data as { message: string }).message as string) || 'Sikeres importálás!';
-          error = null;
-        }
-  
-        update();
-      };
-    }}
-    class="flex flex-col gap-3"
-    action="?/newSubstitution"
-    method="POST"
-  >
+        return async ({ result, update }) => {
+          if (result.type === 'failure') {
+            error = result.data?.message as string;
+            success = null;
+          } else if (result.type === 'success') {
+            success =
+              ((result.data?.data as { message: string }).message as string) ||
+              'Sikeres importálás!';
+            error = null;
+          }
+
+          update();
+        };
+      }}
+      class="flex flex-col gap-3"
+      action="?/newSubstitution"
+      method="POST"
+    >
       <div class="flex flex-row gap-3">
         <div class="w-full">
           <label for="input-date" class="text-white">Dátum</label>
@@ -121,7 +118,13 @@
       <div class="flex flex-row gap-3">
         <div class="w-full">
           <label for="input-subteacher" class="text-white">Helyettesítő tanár</label>
-          <select id="input-subteacher" name="subteacher" class="input" bind:value={subTeacherId} disabled={subCancelled}>
+          <select
+            id="input-subteacher"
+            name="subteacher"
+            class="input"
+            bind:value={subTeacherId}
+            disabled={subCancelled}
+          >
             <option value="" disabled selected>Válassz...</option>
             {#each data.teachers as t}
               <option value={t.id}>{t.name}</option>
@@ -130,14 +133,20 @@
         </div>
         <div class="w-full">
           <label for="input-room" class="text-white">Terem</label>
-          <select id="input-room" name="room" class="input" disabled={subCancelled} bind:value={subRoomId}>
+          <select
+            id="input-room"
+            name="room"
+            class="input"
+            disabled={subCancelled}
+            bind:value={subRoomId}
+          >
             <option value="" disabled selected>Válassz...</option>
             {#each data.rooms as r}
               <option value={r.id}>{r.name}</option>
             {/each}
           </select>
         </div>
-        <div class="flex items-center justify-between gap-8 w-full">
+        <div class="flex w-full items-center justify-between gap-8">
           <span class="flex gap-2">
             <input
               id="input-consolidated"

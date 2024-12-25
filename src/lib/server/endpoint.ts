@@ -135,7 +135,9 @@ export function createPrismaEndpoint<T extends PrismaModel>(
       const results = await config.model.findMany({
         where,
         include: config.include,
-        orderBy: config.orderBy || (config.dateHandling?.enabled ? [{ [config.dateHandling.field || 'date']: 'asc' }] : [])
+        orderBy:
+          config.orderBy ||
+          (config.dateHandling?.enabled ? [{ [config.dateHandling.field || 'date']: 'asc' }] : [])
       });
 
       return createDataResponse(results);

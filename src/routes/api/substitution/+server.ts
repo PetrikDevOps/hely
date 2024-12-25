@@ -11,7 +11,10 @@ export const GET = createPrismaEndpoint({
     room: true,
     class: true
   },
-  dateField: 'date',
+  dateHandling: {
+    enabled: true,
+    field: 'date'
+  },
   filters: [
     { field: 'date', operator: 'gte', type: 'date' },
     { field: 'classId', operator: 'equals', type: 'string' },
