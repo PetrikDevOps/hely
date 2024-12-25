@@ -26,7 +26,10 @@ interface EndpointConfig<T extends PrismaModel> {
     existsModel?: Record<string, any>;
   };
   orderBy?: Record<string, 'asc' | 'desc'>[];
-  dateField?: string;
+  dateHandling?: {
+    enabled: boolean;
+    field?: string;
+  };
   include?: Record<string, boolean>;
   additionalWhere?: Record<string, any>;
 }
@@ -56,7 +59,6 @@ export function createPrismaEndpoint<T extends PrismaModel>(
   return async ({ url, params }) => {
     try {
       const where: Record<string, any> = { ...config.additionalWhere };
-      const dateField = config.dateField || 'date';
 
       // Handle parameter-based filtering
       if (config.paramConfig) {
@@ -78,29 +80,32 @@ export function createPrismaEndpoint<T extends PrismaModel>(
         where[config.paramConfig.dbField || config.paramConfig.name] = paramValue;
       }
 
-      // Handle date range filtering
-      const startDate = url.searchParams.get('startDate');
-      const endDate = url.searchParams.get('endDate');
+      // Handle date range filtering only if enabled
+      if (config.dateHandling?.enabled) {
+        const dateField = config.dateHandling.field || 'date';
+        const startDate = url.searchParams.get('startDate');
+        const endDate = url.searchParams.get('endDate');
 
-      if (startDate && endDate) {
-        try {
-          const start = parseDate(startDate);
-          const end = parseDate(endDate);
-          if (start.isAfter(end)) throw new Error('startDate is after endDate');
-          if (start.isBefore(dayjs().startOf('day')) || end.isBefore(dayjs().startOf('day'))) {
-            throw new Error('startDate or endDate is in the past');
+        if (startDate && endDate) {
+          try {
+            const start = parseDate(startDate);
+            const end = parseDate(endDate);
+            if (start.isAfter(end)) throw new Error('startDate is after endDate');
+            if (start.isBefore(dayjs().startOf('day')) || end.isBefore(dayjs().startOf('day'))) {
+              throw new Error('startDate or endDate is in the past');
+            }
+            where[dateField] = {
+              gte: start.startOf('day').toDate(),
+              lte: end.endOf('day').toDate()
+            };
+          } catch (error) {
+            throw new Error(error instanceof Error ? error.message : 'Invalid date format');
           }
+        } else {
           where[dateField] = {
-            gte: start.startOf('day').toDate(),
-            lte: end.endOf('day').toDate()
+            gte: dayjs().startOf('day').toDate()
           };
-        } catch (error) {
-          throw new Error(error instanceof Error ? error.message : 'Invalid date format');
         }
-      } else {
-        where[dateField] = {
-          gte: dayjs().startOf('day').toDate()
-        };
       }
 
       // Handle custom filters
@@ -130,7 +135,7 @@ export function createPrismaEndpoint<T extends PrismaModel>(
       const results = await config.model.findMany({
         where,
         include: config.include,
-        orderBy: config.orderBy || [{ [dateField]: 'asc' }]
+        orderBy: config.orderBy || (config.dateHandling?.enabled ? [{ [config.dateHandling.field || 'date']: 'asc' }] : [])
       });
 
       return createDataResponse(results);
