@@ -13,3 +13,15 @@ body {
 .button {
   @apply flex gap-1 rounded-lg bg-petrik-1 p-2 transition-colors hover:bg-stone-200;
 }
+
+.input {
+  @apply w-full p-2 rounded-lg shadow-lg;
+  @apply bg-black bg-opacity-10;
+  @apply focus:ring-0 focus:outline-none focus:border-petrik-1;
+  @apply transition-colors duration-200;
+  @apply placeholder-gray-500;
+}
+
+.remove-focus {
+  @apply focus:ring-0 focus:outline-none focus:border-transparent;
+}

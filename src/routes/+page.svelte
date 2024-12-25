@@ -30,4 +30,11 @@
       <RoomSubstitutionTable roomSubstitutions={data.roomSubstitutions} />
     {/if}
   {/each}
+  <!-- if all empty -->
+  {#if Object.values(data.groupedByDate).every((d) => d.announcements.length === 0 && d.substitutions.length === 0 && d.roomSubstitutions.length === 0)}
+    <div class="flex items-center justify-center gap-3">
+      <Icon icon="mdi:emoticon-sad-outline" class="text-6xl" />
+      <span class="text-2xl font-bold">Jaj ne, minden órára be kell menni!</span>
+    </div>
+  {/if}
 </main>

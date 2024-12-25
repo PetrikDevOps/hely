@@ -63,6 +63,13 @@ export class KretaUtil {
       return '';
     }
 
+    // handle names with brackets at the start, remove them
+    if (fullName.startsWith('(')) {
+      const name = fullName.split(' ');
+      name.shift();
+      fullName = name.join(' ');
+    }
+
     // Remove extra whitespace and normalize
     const normalizedName = fullName.trim().replace(/\s+/g, ' ');
 
